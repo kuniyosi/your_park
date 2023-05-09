@@ -1,2 +1,5 @@
-<h1>Admin::Parks#show</h1>
-<p>Find me in app/views/admin/parks/show.html.erb</p>
+<div>
+  <%= image_tag @park.get_image %>
+  <p>公園名：<%= @park.name %></p>
+  <p>紹介：<%= @park.introduction %></p>
+</div>
