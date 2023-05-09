@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'parks/show'
+    get 'parks/index'
+  end
   scope module: :public do
 
     devise_for :customers,skip: [:passwords], controllers: {

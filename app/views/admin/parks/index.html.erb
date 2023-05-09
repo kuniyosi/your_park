@@ -1,2 +1,9 @@
-<h1>Admin::Parks#index</h1>
-<p>Find me in app/views/admin/parks/index.html.erb</p>
+<% @parks.each do |park| %>
+<div>
+  <%= link_to admin_park_path(park.id) do %>
+    <%= image_tag park.get_image %>
+    <p>公園名：<%= park.name %></p>
+  <% end %> 
+  <p>紹介：<%= park.introduction %></p>
+</div>
+<% end %>

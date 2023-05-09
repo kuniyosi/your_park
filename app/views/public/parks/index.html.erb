@@ -1,0 +1,9 @@
+<% @parks.each do |park| %>
+<div>
+  <%= link_to park_path(park.id) do %>
+    <%= image_tag park.get_image %>
+    <p>公園名：<%= park.name %></p>
+  <% end %> 
+  <p>紹介：<%= park.introduction %></p>
+</div>
+<% end %>
