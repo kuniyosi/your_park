@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
     root to: 'homes#top'
     get '/about', to: 'homes#about'
+    get "search_park" => "parks#search_park"
 
   end
 
@@ -33,7 +34,14 @@ Rails.application.routes.draw do
 
     get '', to: 'homes#top'
 
+    get "search_park" => "parks#search_park"
+
   end
+  
+  devise_scope :customer do
+    post 'customers/guest_sign_in', to: 'customers/sessions#guest_sign_in'
+  end
+
 
 
 end

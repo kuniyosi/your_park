@@ -8,4 +8,9 @@ class Public::ParksController < ApplicationController
   def index
     @parks = Park.all
   end
+  
+  def search_park
+    @park = Park.new
+    @parks = Park.search(params[:keyword])
+  end
 end
