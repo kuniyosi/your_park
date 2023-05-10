@@ -40,10 +40,15 @@ class Admin::ParksController < ApplicationController
     redirect_to admin_parks_path
   end
 
+  def search_park
+    @park = Park.new
+    @parks = Park.search(params[:keyword])
+  end
+
   private
 
   def park_params
-    params.require(:park).permit(:name, :image, :introduction)
+    params.require(:park).permit(:name, :image, :introduction, :address, :area)
   end
 
 end

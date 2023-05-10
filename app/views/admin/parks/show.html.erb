@@ -1,6 +1,10 @@
 <div>
-  <%= image_tag @park.get_image %>
+  <%= image_tag @park.get_image(200,200) %>
   <p>公園名：<%= @park.name %></p>
+  <p>
+    エリア：<%= link_to @park.area, admin_search_park_path(keyword: @park.area) %>
+  </p>
+  <p>住所：<%= @park.address %></p>
   <p>紹介：<%= @park.introduction %></p>
   <%= link_to "編集", edit_admin_park_path(@park) %>
   <%= link_to "削除", admin_park_path(@park), method: :delete %>
