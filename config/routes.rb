@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'parks/show'
-    get 'parks/index'
-  end
+
   scope module: :public do
 
     devise_for :customers,skip: [:passwords], controllers: {
@@ -12,6 +9,8 @@ Rails.application.routes.draw do
     }
 
     resources :parks, only: [:index, :show]
+
+    resources :customers, only: [:show, :edit, :update, :destroy]
 
     root to: 'homes#top'
     get '/about', to: 'homes#about'
@@ -25,6 +24,8 @@ Rails.application.routes.draw do
     }
 
     resources :parks, only: [:index, :show, :new, :edit, :create, :update, :destroy]
+
+    resources :customers, only: [:index, :show, :edit, :update, :destroy]
 
     get '', to: 'homes#top'
 

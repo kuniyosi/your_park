@@ -12,19 +12,32 @@ class Admin::ParksController < ApplicationController
        render new_admin_park_path
     end
   end
-  
+
   def show
     @park = Park.find(params[:id])
   end
-  
+
   def index
     @parks = Park.all
   end
 
   def edit
+    @park = Park.find(params[:id])
+  end
+
+  def update
+    @park = Park.find(params[:id])
+    if @park.update(park_params)
+       redirect_to admin_park_path(@park)
+    else
+      render edit
+    end
   end
 
   def destroy
+    @park = Park.find(params[:id])
+    @park.destroy
+    redirect_to admin_parks_path
   end
 
   private
