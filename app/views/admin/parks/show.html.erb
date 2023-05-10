@@ -2,4 +2,6 @@
   <%= image_tag @park.get_image %>
   <p>公園名：<%= @park.name %></p>
   <p>紹介：<%= @park.introduction %></p>
+  <%= link_to "編集", edit_admin_park_path(@park) %>
+  <%= link_to "削除", admin_park_path(@park), method: :delete %>
 </div>
