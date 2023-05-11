@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     }
 
     resources :parks, only: [:index, :show] do
+      resource :favorites, only: [:create, :destroy]
       resources :park_comments, only: [:create, :destroy]
     end
 

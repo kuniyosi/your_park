@@ -1,6 +1,9 @@
 class Park < ApplicationRecord
 
   has_many :park_comments, dependent: :destroy
+  has_many :park_tags, dependent: :destroy
+  has_many :tags, through: :park_tags, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   has_one_attached :image
 
@@ -14,6 +17,10 @@ class Park < ApplicationRecord
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     image.variant(resize_to_limit: [width, height]).processed
+  end
+
+  def favorited_by?(customer)
+    favorites.exists?(customer_id: customer.id)
   end
 
 end

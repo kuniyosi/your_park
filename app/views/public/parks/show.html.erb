@@ -6,6 +6,26 @@
   </p>
   <p>住所：<%= @park.address %></p>
   <p>紹介：<%= @park.introduction %></p>
+  <p>ポイント：
+    <% @park.tags.each do |tag| %>
+      <%= tag.name %>
+    <% end %>
+  </p>
+  <% if @park.favorited_by?(current_customer) %>
+    <p>
+      <%= link_to park_favorites_path(@park), method: :delete do %>
+        お気に入りを外す
+      <% end %>
+    </p>
+    <p>お気に入り登録数：<%= @park.favorites.count %></p>
+    <% else %>
+    <p>
+      <%= link_to park_favorites_path(@park), method: :post do %>
+        お気に入り登録👍
+      <% end %>
+    </p>
+    <p>お気に入り登録数：<%= @park.favorites.count %></p>
+  <% end %>
 </div>
 
 <div>
