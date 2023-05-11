@@ -1,0 +1,11 @@
+<div>
+  <h3><%= @customer.name %>さんのページです</h3>
+  <p><%= @customer.introduction %></p>
+  <%= image_tag @customer.get_profile_image(100,100) %>
+  <% if @customer.name != "guest" %>
+   <% if @customer == current_customer %>
+     <%= link_to "プロフィール編集", edit_customer_path(@customer) %>
+   <% end %>
+  <% end %>
+
+</div>

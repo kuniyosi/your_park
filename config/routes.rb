@@ -1,3 +1,47 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+
+  scope module: :public do
+
+    devise_for :customers,skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+    }
+
+    resources :parks, only: [:index, :show] do
+      resources :park_comments, only: [:create, :destroy]
+    end
+
+    resources :customers, only: [:show, :edit, :update, :destroy]
+
+    root to: 'homes#top'
+    get '/about', to: 'homes#about'
+    get "search_park" => "parks#search_park"
+
+  end
+
+  namespace :admin do
+
+    devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+    }
+
+    resources :parks, only: [:index, :show, :new, :edit, :create, :update, :destroy] do
+      resources :park_comments, only: [:destroy]
+    end
+
+    resources :customers, only: [:index, :show, :edit, :update, :destroy]
+
+    get '', to: 'homes#top'
+
+    get "search_park" => "parks#search_park"
+
+  end
+  
+  devise_scope :customer do
+    post 'customers/guest_sign_in', to: 'customers/sessions#guest_sign_in'
+  end
+
+
+
 end

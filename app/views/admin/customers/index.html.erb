@@ -1,0 +1,8 @@
+<% @customers.each do |customer| %>
+<div>
+  <%= link_to admin_customer_path(customer.id) do %>
+    <%= image_tag customer.get_profile_image(100,100) %>
+    <p><%= customer.name %></p>
+  <% end %>
+</div>
+<% end %>

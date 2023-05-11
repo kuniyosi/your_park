@@ -1,0 +1,7 @@
+<div>
+  <%= image_tag @customer.get_profile_image(100,100) %>
+  <p><%= @customer.name %></p>
+  <p><%= @customer.introduction %></p>
+  <%= link_to "会員編集", edit_admin_customer_path(@customer) %>
+  <%= link_to "会員削除", admin_customer_path(@customer), method: :delete %>
+</div>

@@ -2,15 +2,55 @@
 <html>
   <head>
     <title>YourPark</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+    <% if customer_signed_in? %>
+      <li>
+        <%= link_to 'マイページ', customer_path(current_customer.id) %>
+      </li>
+      <li>
+        <%= link_to '公園一覧', parks_path %>
+      </li>
+      <li>
+        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+      </li>
+    <% elsif admin_admin_signed_in? %>
+      <li>
+        <%= link_to '会員一覧', admin_customers_path %>
+      </li>
+      <li>
+        <%= link_to '公園一覧', admin_parks_path %>
+      </li>
+      <li>
+        <%= link_to '投稿フォーム', new_admin_park_path %>
+      </li>
+      <li>
+        <%= link_to "ログアウト", destroy_admin_admin_session_path, method: :delete %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to "新規登録", new_customer_registration_path %>
+      </li>
+      <li>
+        <%= link_to "管理者ログイン", admin_admin_session_path %>
+      </li>
+      <li>
+        <%= link_to "ログイン", new_customer_session_path %>
+      </li>
+      <li>
+        <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post %>
+      </li>
+    <% end %>
+  </header>
     <%= yield %>
   </body>
 </html>
+

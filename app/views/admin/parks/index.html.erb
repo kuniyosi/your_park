@@ -1,0 +1,13 @@
+<% @parks.each do |park| %>
+<div>
+  <%= link_to admin_park_path(park.id) do %>
+    <%= image_tag park.get_image(150,150) %>
+    <p>公園名：<%= park.name %></p>
+  <% end %>
+  <p>
+    エリア：<%= link_to park.area, admin_search_park_path(keyword: park.area) %>
+  </p>
+  <p>紹介：<%= park.introduction %></p>
+  <p><%= link_to "#{park.park_comments.count} コメント", park_path(park.id) %></p>
+</div>
+<% end %>
