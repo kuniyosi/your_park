@@ -6,6 +6,13 @@
   </p>
   <p>住所：<%= @park.address %></p>
   <p>紹介：<%= @park.introduction %></p>
+  <p>ポイント：
+    <% @park.tags.each do |tag| %>
+      <%= tag.name %>
+    <% end %>
+  </p>
+  <p>お気に入り登録数：<%= @park.favorites.count %></p>
+
   <%= link_to "編集", edit_admin_park_path(@park) %>
   <%= link_to "削除", admin_park_path(@park), method: :delete %>
 </div>
