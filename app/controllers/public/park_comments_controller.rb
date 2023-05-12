@@ -16,7 +16,7 @@ class Public::ParkCommentsController < ApplicationController
   private
 
   def park_comment_params
-    params.require(:park_comment).permit(:comment)
+    params.require(:park_comment).permit(:comment, :star)
   end
 
 end
