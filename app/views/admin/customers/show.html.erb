@@ -5,3 +5,10 @@
   <%= link_to "会員編集", edit_admin_customer_path(@customer) %>
   <%= link_to "会員削除", admin_customer_path(@customer), method: :delete %>
 </div>
+
+<% if @favorite_list.present? %>
+  <% @favorite_list.each do |park| %>
+    <%= park.name %>
+    <%= image_tag park.get_image(150,150) %>
+    <% end %>
+<% end %>

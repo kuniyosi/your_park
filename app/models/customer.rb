@@ -6,6 +6,7 @@ class Customer < ApplicationRecord
 
   has_many :park_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :parks, through: :favorites
 
   has_one_attached :profile_image
 

@@ -7,5 +7,11 @@
      <%= link_to "プロフィール編集", edit_customer_path(@customer) %>
    <% end %>
   <% end %>
-
 </div>
+
+<% if @favorite_list.present? %>
+  <% @favorite_list.each do |park| %>
+    <%= park.name %>
+    <%= image_tag park.get_image(150,150) %>
+    <% end %>
+<% end %>
