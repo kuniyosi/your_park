@@ -3,6 +3,10 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    @parks = @customer.parks
+
+    favorites = Favorite.where(customer_id: current_customer.id).pluck(:park_id)
+    @favorite_list = Park.find(favorites)
   end
 
   def edit
@@ -17,6 +21,7 @@ class Public::CustomersController < ApplicationController
       render :edit
     end
   end
+
 
  private
 

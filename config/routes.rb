@@ -13,7 +13,9 @@ Rails.application.routes.draw do
       resources :park_comments, only: [:create, :destroy]
     end
 
-    resources :customers, only: [:show, :edit, :update, :destroy]
+    resources :customers, only: [:show, :edit, :update, :destroy] do
+      get :bookmarks, on: :collection
+    end
 
     root to: 'homes#top'
     get '/about', to: 'homes#about'
@@ -38,7 +40,7 @@ Rails.application.routes.draw do
     get "search_park" => "parks#search_park"
 
   end
-  
+
   devise_scope :customer do
     post 'customers/guest_sign_in', to: 'customers/sessions#guest_sign_in'
   end
