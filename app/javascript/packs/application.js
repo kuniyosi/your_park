@@ -19,4 +19,14 @@ Turbolinks.start()
 ActiveStorage.start()
 
 global.$ = jQuery;
-window.$ = jQuery;
+// window.$ = jQuery;
+
+window.$ = window.jQuery = require('jquery');
+require('packs/raty')
+
+import Raty from "packs/raty.js"
+window.raty = function(elem,opt) {
+  let raty =  new Raty(elem,opt)
+  raty.init();
+  return raty;
+}
