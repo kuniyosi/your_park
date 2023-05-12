@@ -11,18 +11,14 @@
       <%= tag.name %>
     <% end %>
   </p>
-  <p>お気に入り登録数：<%= @park.favorites.count %></p>
-
   <%= link_to "編集", edit_admin_park_path(@park) %>
   <%= link_to "削除", admin_park_path(@park), method: :delete %>
 </div>
 
-<div>
-  <p>コメント件数：<%= @park.park_comments.count %></p>
-  <% @park.park_comments.each do |park_comment| %>
-    <p><%= image_tag park_comment.customer.get_profile_image(100,100) %></p>
-    <%= park_comment.customer.name %>
-    <%= park_comment.created_at.strftime('%Y/%m/%d') %><%= park_comment.comment %>
-    <%= link_to "削除", admin_park_park_comment_path(park_comment.park, park_comment), method: :delete %>
-  <% end %>
+<div id = "comments_count_<%= @park.id %>">
+  <%= render "admin/park_comments/comments_count", park: @park %>
+</div>
+
+<div id = "comments_index_<%= @park.id %>">
+  <%= render "admin/park_comments/comments_index", park: @park %>
 </div>

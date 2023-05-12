@@ -1,0 +1,2 @@
+$("#comments_count_<%= @comment.park_id %>").html("<%= j(render "admin/park_comments/comments_count", park: @comment.park) %>")
+$("#comments_index_<%= @comment.park_id %>").html("<%= j(render "admin/park_comments/comments_index", park: @comment.park) %>")
