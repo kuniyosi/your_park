@@ -15,6 +15,10 @@
   <%= link_to "削除", admin_park_path(@park), method: :delete %>
 </div>
 
+<div id = "star_average_<%= @park.id %>">
+  <%= render "admin/park_comments/star_average", park: @park %>
+</div>
+
 <div id = "comments_count_<%= @park.id %>">
   <%= render "admin/park_comments/comments_count", park: @park %>
 </div>
@@ -22,3 +26,5 @@
 <div id = "comments_index_<%= @park.id %>">
   <%= render "admin/park_comments/comments_index", park: @park %>
 </div>
+
+<%= render "admin/park_comments/star", park: @park %>
