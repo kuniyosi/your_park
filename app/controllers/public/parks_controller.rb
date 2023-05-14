@@ -3,6 +3,8 @@ class Public::ParksController < ApplicationController
   def show
     @park = Park.find(params[:id])
     @park_comment = ParkComment.new
+
+    @comments = @park.park_comments.all
   end
 
   def index
