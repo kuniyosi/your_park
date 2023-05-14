@@ -4,6 +4,10 @@
   
   <%= park_comment.customer.name %>
   <%= park_comment.created_at.strftime('%Y/%m/%d') %><%= park_comment.comment %>
+  <p>評価 :<%= park_comment.star %>点</p>
+  <div id="star_<%= park_comment.id%>">
+    
+  </div>
   
   <%= link_to "削除", admin_park_park_comment_path(park_comment.park, park_comment), method: :delete, remote: true %>
   
