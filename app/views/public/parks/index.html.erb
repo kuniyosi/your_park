@@ -10,6 +10,10 @@
   <p>紹介：<%= park.introduction %></p>
   <p><%= link_to "#{park.park_comments.count} コメント", park_path(park.id) %></p>
 </div>
+<div>
+   <%= render "public/park_comments/star_average", park: park %>
+</div>
+
 <% end %>
 
 <%= form_tag({controller:"parks",action:"index"}, method: :get) do %>

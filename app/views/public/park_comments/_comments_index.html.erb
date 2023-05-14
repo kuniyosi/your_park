@@ -4,6 +4,7 @@
 
   <%= park_comment.customer.name %>
   <%= park_comment.created_at.strftime('%Y/%m/%d') %><%= park_comment.comment %>
+  <p>評価 :<%= park_comment.star %>点</p>
   <div id="star_<%= park_comment.id%>">
 
   </div>

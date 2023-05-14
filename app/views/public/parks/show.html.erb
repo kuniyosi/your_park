@@ -14,7 +14,11 @@
   <div id = "favorite_<%= @park.id %>">
     <%= render "public/favorites/favorite", park: @park %>
   </div>
+
   <div id = "star_average_<%= @park.id %>">
+   <%= render "public/park_comments/star_average", park: @park %>
+  </div>
+
   </div>
   <div id = "comments_count_<%= @park.id %>">
     <%= render "public/park_comments/comments_count", park: @park %>
