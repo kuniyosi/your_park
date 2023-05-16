@@ -1,0 +1,19 @@
+<% park.park_comments.each do |park_comment| %>
+
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector("#star_<%= park_comment.id %>");
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path("star-on.png") %>",
+    starOff: "<%= asset_path("star-off.png") %>",
+    score: "<%= park_comment.star %>",
+    readOnly: true,
+  };
+  raty(elem, opt);
+});
+</script>
+
+<% end %>

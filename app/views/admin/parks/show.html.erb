@@ -1,0 +1,30 @@
+<div>
+  <%= image_tag @park.get_image(200,200) %>
+  <p>公園名：<%= @park.name %></p>
+  <p>
+    エリア：<%= link_to @park.area, admin_search_park_path(keyword: @park.area) %>
+  </p>
+  <p>住所：<%= @park.address %></p>
+  <p>紹介：<%= @park.introduction %></p>
+  <p>ポイント：
+    <% @park.tags.each do |tag| %>
+      <%= tag.name %>
+    <% end %>
+  </p>
+  <%= link_to "編集", edit_admin_park_path(@park) %>
+  <%= link_to "削除", admin_park_path(@park), method: :delete %>
+</div>
+
+<div id = "star_average_<%= @park.id %>">
+  <%= render "admin/park_comments/star_average", park: @park %>
+</div>
+
+<div id = "comments_count_<%= @park.id %>">
+  <%= render "admin/park_comments/comments_count", park: @park %>
+</div>
+
+<div id = "comments_index_<%= @park.id %>">
+  <%= render "admin/park_comments/comments_index", park: @park %>
+</div>
+
+<%= render "admin/park_comments/star", park: @park %>

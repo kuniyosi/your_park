@@ -1,0 +1,13 @@
+<% if park.favorited_by?(current_customer) %>
+    <p>
+      <%= link_to park_favorites_path(park), method: :delete, remote: true do %>
+        お気に入りを外す：<%= park.favorites.count %>
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to park_favorites_path(park), method: :post, remote: true do %>
+        お気に入り登録👍:<%= park.favorites.count %>
+      <% end %>
+    </p>
+  <% end %>

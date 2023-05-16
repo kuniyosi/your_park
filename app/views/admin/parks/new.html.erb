@@ -1,0 +1,33 @@
+<h1>投稿フォーム</h1>
+  <%= form_with model: [:admin,@park], local:true do |f| %>
+    <h4>画像</h4>
+      <%= f.file_field :image, accept: "image/*" %>
+    <h4>公園名</h4>
+      <%= f.text_field :name %>
+    <h4>住所</h4>
+      <%= f.text_field :address %>
+    <h4>紹介</h4>
+      <%= f.text_area :introduction %>
+    <h4>エリア</h4>
+      <%= f.text_field :area %>
+    <h4>タグ</h4>
+    <div class='form-group'>
+    　<%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+    　　<div class = 'form-check'>
+    　　    <%= tag.label class: 'form-check-label' do %>
+            <%= tag.check_box class: 'form-check-input' %>
+            <%= tag.text %>
+          <% end %>
+    　　</div>
+    　<% end %>
+    </div>
+    <%= f.submit '投稿' %>
+  <% end %>
+
+<h4>タグ追加フォーム</h4>
+  <div>
+    <%= form_tag({controller:"parks",action:"new"}, method: :get) do %>
+    <%= text_field_tag :tag %>
+  </div>
+    <%= submit_tag 'タグを追加' %>
+<% end %>
