@@ -1,3 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+     <%= render 'public/parks/tag' %>
+    </div>
+    <div class = "col-9">
+
 <% @parks.each do |park| %>
 <div>
   <%= link_to park_path(park.id) do %>
@@ -15,11 +22,8 @@
 </div>
 
 <% end %>
-
-<%= form_tag({controller:"parks",action:"index"}, method: :get) do %>
-    <% Tag.all.each do |t| %>
-        <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
-    <% end %>
-    <%= submit_tag '検索' %>
-<% end %>
+    
+    </div>
+  </div>
+</div>
 
