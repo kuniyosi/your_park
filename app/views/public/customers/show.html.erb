@@ -9,6 +9,13 @@
   <% end %>
 </div>
 
+<h4>投稿一覧</h4>
+<% @parks.each do |park| %>
+ <%= park.name %>
+ <%= image_tag park.get_image(150,150) %>
+<% end %>
+
+<h4>お気に入り一覧</h4>
 <% if @favorite_list.present? %>
   <% @favorite_list.each do |park| %>
     <%= park.name %>

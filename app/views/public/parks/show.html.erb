@@ -11,6 +11,9 @@
       <%= tag.name %>
     <% end %>
   </p>
+    <%= link_to "編集", edit_park_path(@park) %>
+  　<%= link_to "削除", park_path(@park), method: :delete %>
+  </div>
   <div id = "favorite_<%= @park.id %>">
     <%= render "public/favorites/favorite", park: @park %>
   </div>
