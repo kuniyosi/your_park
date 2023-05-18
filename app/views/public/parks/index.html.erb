@@ -1,28 +1,37 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
+    <div class="col-3　mt-4">
      <%= render 'public/parks/tag' %>
     </div>
-    <div class = "col-9">
+    <div class = "col-9 mt-4">
+      <h3 class="mb-4 text-center">公園一覧</h3>
+      <div class="row">
 
-<% @parks.each do |park| %>
-<div>
-  <%= link_to park_path(park.id) do %>
-    <%= image_tag park.get_image(150,150) %>
-    <p>公園名：<%= park.name %></p>
-  <% end %>
-  <p>
-    エリア：<%= link_to park.area, search_park_path(keyword: park.area) %>
-  </p>
-  <p>紹介：<%= park.introduction %></p>
-  <p><%= link_to "#{park.park_comments.count} コメント", park_path(park.id) %></p>
-</div>
-<div>
-   <%= render "public/park_comments/star_average", park: park %>
-</div>
+　　　<% @parks.each do |park| %>
+　　　<div class="col-3">
+      <div class="card">
+        <%= link_to park_path(park.id) do %>
+          <%= image_tag park.get_image(150,150), class:"img-fluid" %>
+        <% end %>
+
+    　　<div class="card-body">
+         <p class="card-title">
+           <%= park.name %>
+         </p>
+         <p class="card-subtitle">
+           <%= link_to park.area, search_park_path(keyword: park.area) %>
+         </p>
+         <p class="card-average">
+          <%= render "public/park_comments/star_average", park: park %>
+         </p>
+         <p class="card-count">
+           <%= link_to "#{park.park_comments.count} コメント", park_path(park.id) %>
+         </p>
+        </div>
+      </div>
+     </div>
 
 <% end %>
-    
     </div>
   </div>
 </div>

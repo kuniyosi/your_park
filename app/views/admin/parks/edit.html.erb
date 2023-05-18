@@ -1,5 +1,5 @@
 <h2>公園情報編集</h2>
-<%= form_with model: @park do |f| %>
+<%= form_with model: [:admin,@park] do |f| %>
   <label for="inputName">公園名</label>
   <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"公園名"%>
   <label for="inputIntroduction">紹介文</label>

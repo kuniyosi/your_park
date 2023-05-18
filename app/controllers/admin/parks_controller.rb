@@ -1,5 +1,21 @@
 class Admin::ParksController < ApplicationController
 
+  def new
+    @park = Park.new
+    if params[:tag]
+      Tag.create(name: params[:tag])
+    end
+  end
+
+  def create
+    @park = Park.new(park_params)
+    if @park.save
+       redirect_to admin_parks_path
+    else
+       render new_admin_park_path
+    end
+  end
+
   def show
     @park = Park.find(params[:id])
   end
@@ -16,6 +32,19 @@ class Admin::ParksController < ApplicationController
   end
 
 
+  def edit
+    @park = Park.find(params[:id])
+  end
+
+  def update
+    @park = Park.find(params[:id])
+    if @park.update(park_params)
+       redirect_to admin_park_path(@park)
+    else
+      render admin_edit_path
+    end
+  end
+
   def destroy
     @park = Park.find(params[:id])
     @park.destroy
@@ -30,7 +59,7 @@ class Admin::ParksController < ApplicationController
   private
 
   def park_params
-    params.require(:park).permit(tag_ids: [])
+    params.require(:park).permit(:name, :image, :introduction, :address, :area, tag_ids: [])
   end
 
 end

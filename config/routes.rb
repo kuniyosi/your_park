@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
     }
 
-    resources :parks, only: [:index, :show, :new, :edit, :create, :update, :destroy] do
+    resources :parks, only: [:index, :show] do
       resource :favorites, only: [:create, :destroy]
       resources :park_comments, only: [:create, :destroy]
     end
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
     }
 
-    resources :parks, only: [:index, :show, :destroy] do
+    resources :parks, only: [:index, :show, :new, :edit, :create, :update, :destroy] do
       resources :park_comments, only: [:destroy]
     end
 

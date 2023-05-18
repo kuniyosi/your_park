@@ -1,5 +1,5 @@
 <h1>投稿フォーム</h1>
-  <%= form_with model: @park, local:true do |f| %>
+  <%= form_with model: [:admin,@park], local:true do |f| %>
     <h4>画像</h4>
       <%= f.file_field :image, accept: "image/*" %>
     <h4>公園名</h4>

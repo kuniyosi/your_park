@@ -1,6 +1,23 @@
-<%= form_tag({controller:"parks",action:"index"}, method: :get) do %>
+<div class="card" style="width: 15rem;">
+  <div class="card-header bg-info">
+    タグキーワード一覧
+  </div>
+  
+  <%= form_tag({controller:"parks",action:"index"}, method: :get) do %>
+
+  <ul class="list-group list-group-flush">
+    
     <% Tag.all.each do |t| %>
-        <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
+      <li class="list-group-item">
+        <%= check_box :tag_ids, t.name, class: 'mr-2' %>
+        <%= t.name %>
+      </li>
     <% end %>
-    <%= submit_tag '検索' %>
-<% end %>
+    
+      <li class="list-group-item text-center">
+        <%= submit_tag '検索', class:"btn btn-primary mt-3 btn-sm" %>
+      </li>
+      
+  </ul>
+  <% end %>
+</div>

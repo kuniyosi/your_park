@@ -14,7 +14,7 @@
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light bg-success">
         <div class="container">
-          <a class="navbar-brand p-3" href="/"><%= image_tag('logo.png', size: "150x75") %></a>
+          <a class="navbar-brand p-3" href="/"><%= image_tag('logo.png', size: "150x150") %></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -28,12 +28,12 @@
                <%= link_to '公園一覧', parks_path, class: 'bg-light btn mr-3' %>
              </li>
              <li class = "nav-item">
-               <%= link_to '投稿フォーム', new_park_path, class: 'bg-light btn mr-3' %>
-             </li>
-             <li class = "nav-item">
                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'bg-light btn mr-3' %>
              </li>
             <% elsif admin_admin_signed_in? %>
+             <li class = "nav-item">
+               <%= link_to '投稿フォーム', new_admin_park_path, class: 'bg-light btn mr-3' %>
+             </li>
              <li class = "nav-item">
                <%= link_to '会員一覧', admin_customers_path, class: 'bg-light btn mr-3' %>
              </li>
