@@ -1,8 +1,9 @@
+<div class="form-group">
 <%= form_with model: [park, park_comment],local: false do |f| %>
-  <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+  <%= f.text_area :comment,  class: "form-control", rows: '5', placeholder: "コメントをここに" %>
 
 
-<div id="star">
+<div id="star" class = "text-left">
     <%= f.label :star,'評価 ' %>
     <%= f.hidden_field :star, id: :review_star %>
   </div>
@@ -25,7 +26,10 @@
 
 </script>
 
-<%= f.submit "送信する" %>
- 
+<div class = "text-left">
+<%= f.submit "送信する", class: "btn btn-primary" %>
+</div>
+</div>
+
 <% end %>
 

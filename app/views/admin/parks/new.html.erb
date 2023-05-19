@@ -55,14 +55,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-<h4>タグ追加フォーム</h4>
-  <div>
-    <%= form_tag({controller:"parks",action:"new"}, method: :get) do %>
-    <%= text_field_tag :tag %>
-  </div>
-    <%= submit_tag 'タグを追加' %>
-<% end %>

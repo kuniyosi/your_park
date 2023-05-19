@@ -1,31 +1,49 @@
-<div>
-  <%= image_tag @park.get_image(200,200) %>
-  <p>公園名：<%= @park.name %></p>
-  <p>
-    エリア：<%= link_to @park.area, admin_search_park_path(keyword: @park.area) %>
-  </p>
-  <p>住所：<%= @park.address %></p>
-  <p>紹介：<%= @park.introduction %></p>
-  <p>ポイント：
-    <% @park.tags.each do |tag| %>
-      <%= tag.name %>
-    <% end %>
-  </p>
- 　<%= link_to "編集", edit_admin_park_path(@park) %>
-  <%= link_to "削除", admin_park_path(@park), method: :delete %>
-</div>
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+    </div>
+    <div class="col-8">
+      <div class = "my-4">
+        <%= image_tag @park.get_image(600,400), size: "600x400", class: "d-block mx-auto" %>
+      </div>
+      <h3><strong><%= @park.name %></strong></h3>
 
-<div id = "star_average_<%= @park.id %>">
-  <%= render "admin/park_comments/star_average", park: @park %>
-</div>
+      <%= link_to "編集", edit_admin_park_path(@park), class: "btn btn-outline-success" %>
+      <%= link_to "削除", admin_park_path(@park), class: "btn btn-outline-danger", method: :delete %>
 
-<div id = "comments_count_<%= @park.id %>">
-  <%= render "admin/park_comments/comments_count", park: @park %>
-</div>
+      <ul class="list-group mt-4">
+        <li class="list-group-item">
+          住所：<%= @park.address %>
+        </li>
+        <li class="list-group-item">
+          紹介：<%= @park.introduction %>
+        </li>
+        <li class="list-group-item">
+          エリア：<%= link_to @park.area, admin_search_park_path(keyword: @park.area) %>
+        </li>
+        <li class="list-group-item" id = "star_average_<%= @park.id %>">
+          <%= render "admin/park_comments/star_average", park: @park %>
+        </li>
+       <li class="list-group-item" id = "comments_count_<%= @park.id %>">
+         <%= render "admin/park_comments/comments_count", park: @park %>
+       </li>
+      </ul>
+   </div>
+   <div class="col-2"></div>
 
-<div id = "comments_index_<%= @park.id %>">
-  <%= render "admin/park_comments/comments_index", park: @park %>
+  <div class="col-2"></div>
+
+   <div class="col-8 my-5">
+     <div id = "comments_index_<%= @park.id %>">
+      <%= render "admin/park_comments/comments_index", park: @park %>
+     </div>
+   </div>
+
+  <div class="col-2"></div>
+
 </div>
 
 <%= render "admin/park_comments/star", park: @park %>
+
+
 

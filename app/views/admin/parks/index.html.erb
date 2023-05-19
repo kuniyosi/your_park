@@ -1,7 +1,10 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-3">
-     <%= render 'admin/parks/tag' %>
+      <%= render 'admin/parks/tag_index' %>
+
+      <%= render 'admin/parks/tag_new' %>
+
     </div>
 
 <div class = "col-8  offset-1 mt-4">
@@ -16,7 +19,7 @@
         <% else %>
         <table class='table table-hover table-inverse table-dark table-striped'>
        <thead>
-        <tr>
+        <tr class = "text-center">
         <th></th>
         <th>公園名</th>
         <th>エリア</th>
@@ -25,7 +28,7 @@
       </thead>
        <tbody>
 <% @parks.each do |park| %>
-<tr>
+<tr class = "text-center">
  <td>
   <%= link_to admin_park_path(park.id) do %>
     <%= image_tag park.get_image(150,150), size:'150x100' %>

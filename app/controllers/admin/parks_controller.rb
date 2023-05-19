@@ -4,6 +4,7 @@ class Admin::ParksController < ApplicationController
     @park = Park.new
     if params[:tag]
       Tag.create(name: params[:tag])
+      redirect_to admin_parks_path
     end
   end
 
@@ -28,6 +29,11 @@ class Admin::ParksController < ApplicationController
         @parks += Tag.find_by(name: key).parks if value == "1"
       end
       @parks.uniq!
+    end
+    
+    @park = Park.new
+    if params[:tag]
+      Tag.create(name: params[:tag])
     end
   end
 

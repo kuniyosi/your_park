@@ -1,0 +1,21 @@
+<div class="card my-4" style="width: 15rem;">
+
+  <div class="card-header bg-secondary text-light text-center">
+    タグ追加フォーム
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <%= form_tag({controller:"parks",action:"new"}, method: :get) do %>
+
+    <li class="list-group-item">
+      <%= text_field_tag :tag %>
+    </li>
+
+    <li class = "list-group-item text-center">
+      <%= submit_tag 'タグを追加', class:"btn btn-primary mt-3 btn-sm" %>
+    </li>
+
+    <% end %>
+  </ul>
+
+</div>

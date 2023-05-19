@@ -1,16 +1,30 @@
+<div class="card-list-container my-5">
 <% park.park_comments.each do |park_comment| %>
 
-  <p><%= image_tag park_comment.customer.get_profile_image(100,100) %></p>
-
-  <%= park_comment.customer.name %>
-  <%= park_comment.created_at.strftime('%Y/%m/%d') %><%= park_comment.comment %>
-  <p>評価 :<%= park_comment.star %>点</p>
-  <div id="star_<%= park_comment.id%>">
-
-  </div>
-
-  <% if park_comment.customer == current_customer  %>
-    <%= link_to "削除", park_park_comment_path(park_comment.park, park_comment), method: :delete,  remote: true %>
-  <% end %>
-
+<div class="card-body">
+  <div class="row">
+    <div class="col-md-2">
+      <%= image_tag park_comment.customer.get_profile_image(100,100), class:"mt-3 rounded-circle"; %>
+    </div>
+       <div class="col-md-10">
+          <p class="card-title ml-5">
+            <%= park_comment.customer.name %>
+          </p>
+          <p class = "card-text ml-5">
+            <%= park_comment.comment %>
+          </p>
+          <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= park_comment.created_at.strftime('%Y/%m/%d') %></li>
+          <li class="list-group-item">評価 :<%= park_comment.star %>点</li>
+          <li class="list-group-item" id="star_<%= park_comment.id%>"></li>
+          </ul>
+          <div class="card-body">
+            <% if park_comment.customer == current_customer  %>
+              <%= link_to "削除", park_park_comment_path(park_comment.park, park_comment), method: :delete,  remote: true %>
+            <% end %>
+          </div>
+      </div>
+     </div>
+   </div>
 <% end %>
+</div>
