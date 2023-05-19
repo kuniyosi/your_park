@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row no-gutters">
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
-      <h5 class="text-light bg-info p-4 mb-0">新規投稿フォーム</h5>
+      <h5 class="text-light bg-secondary p-4 mb-0">新規投稿フォーム</h5>
       <div class="form-body p-4">
 
         <%= form_with model: [:admin,@park], local:true do |f| %>
@@ -48,7 +48,7 @@
 　　　　      </ul>
 　　　　  </div>
 
-　　　    <%= f.submit '投稿', class:"btn btn-lg btn-block btn-info" %>
+　　　    <%= f.submit '投稿', class:"btn btn-lg btn-block btn-secondary" %>
 　　　　<% end %>
 
       </div>

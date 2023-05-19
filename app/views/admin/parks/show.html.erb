@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container my-5">
   <div class="row">
-    <div class="col-2">
+    <div class="col-md-2">
     </div>
-    <div class="col-8">
+    <div class="col-md-8">
       <div class = "my-4">
-        <%= image_tag @park.get_image(600,400), size: "600x400", class: "d-block mx-auto" %>
+        <%= image_tag @park.get_image(600,400), size: "600x400", class: "d-block mx-auto col-md-10" %>
       </div>
       <h3><strong><%= @park.name %></strong></h3>
 
@@ -28,22 +28,16 @@
          <%= render "admin/park_comments/comments_count", park: @park %>
        </li>
       </ul>
-   </div>
-   <div class="col-2"></div>
-
-  <div class="col-2"></div>
-
-   <div class="col-8 my-5">
-     <div id = "comments_index_<%= @park.id %>">
+      <div id = "comments_index_<%= @park.id %>">
       <%= render "admin/park_comments/comments_index", park: @park %>
      </div>
    </div>
-
-  <div class="col-2"></div>
+   <div class="col-2"></div>
 
 </div>
 
 <%= render "admin/park_comments/star", park: @park %>
 
+</div>
 
 

@@ -17,7 +17,6 @@ class Public::ParksController < ApplicationController
   end
 
   def search_park
-
     @parks = Park.search(params[:keyword])
   end
 

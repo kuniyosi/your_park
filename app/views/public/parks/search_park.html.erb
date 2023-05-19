@@ -1,11 +1,41 @@
-<% @parks.each do |park| %>
-<div>
-  <%= link_to park_path(park.id) do %>
-    <%= image_tag park.get_image(150,150) %>
-    <p>公園名：<%= park.name %></p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+   <div class = "col-8 mx-auto mt-4">
+
+<h2 class="mb-4">絞り込み表示</h2>
+
+<table class='table table-hover table-inverse table-dark table-striped'>
+       <thead>
+        <tr class = "text-center">
+        <th></th>
+        <th>公園名</th>
+        <th>エリア</th>
+        <th>平均点</th>
+        </tr>
+      </thead>
+       <tbody>
+         <% @parks.each do |park| %>
+        <tr class = "text-center">
+ <td>
+  <%= link_to admin_park_path(park.id) do %>
+    <%= image_tag park.get_image(150,150), size:'150x100' %>
   <% end %>
-  <p>地域：<%= park.area %></p>
-  <p>紹介：<%= park.introduction %></p>
-  <p><%= link_to "#{park.park_comments.count} コメント", park_path(park.id) %></p>
-</div>
+ </td>
+ <td>
+   <%=link_to park.name,admin_park_path(park.id)  %>
+   </td>
+  <td>
+    <%= link_to park.area, admin_search_park_path(keyword: park.area) %>
+  </td>
+<td>
+   <%= render "public/park_comments/star_average", park: park %>
+</td>
+</tr>
 <% end %>
+      </tbody>
+</table>
+<div>
+  
+
+  </div>
+</div>
