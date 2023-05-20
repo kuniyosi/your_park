@@ -31,7 +31,7 @@
         <% if @customer == current_customer %>
         <tr>
           <th>
-               <%= link_to "会員削除", customer_path(@customer), method: :delete, class: "btn btn-outline-danger" %>
+               <%= link_to "会員削除", customer_path(@customer), method: :delete, class: "btn btn-outline-danger", "data-confirm" => "本当に削除しますか？""削除した場合、データは全て消去されます。"  %>
           </th>
         </tr>
         <% end %>

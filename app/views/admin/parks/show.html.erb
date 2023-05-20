@@ -9,7 +9,7 @@
       <h3><strong><%= @park.name %></strong></h3>
 
       <%= link_to "編集", edit_admin_park_path(@park), class: "btn btn-outline-success" %>
-      <%= link_to "削除", admin_park_path(@park), class: "btn btn-outline-danger", method: :delete %>
+      <%= link_to "削除", admin_park_path(@park), class: "btn btn-outline-danger", method: :delete,  "data-confirm" => "本当に削除しますか？"  %>
 
       <ul class="list-group mt-4">
         <li class="list-group-item">

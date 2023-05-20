@@ -2,47 +2,57 @@
   <div class="row no-gutters">
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
       <h5 class="text-light bg-secondary p-4 mb-0">投稿編集フォーム</h5>
+
+      <% if @park.errors.any? %>
+        <%= @park.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @park.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
       <div class="form-body p-4">
-        
+
         <%= form_with model: [:admin,@park], local:true do |f| %>
           <%= f.file_field :image, accept: "image/*" %>
-          
+
           <div class="input-group mb-3 mt-4">
             <div class="input-group-prepend">
               <span class="input-group-text" aria-hidden="true">公園名</span>
             </div>
           <%= f.text_field :name, class:"form-control", placeholder:"例：江坂公園" %>
           </div>
-          
+
           <div class="input-group mb-3 mt-4">
             <div class="input-group-prepend">
               <span class="input-group-text" aria-hidden="true">住所</span>
             </div>
           <%= f.text_field :address, class:"form-control", placeholder:"例：吹田市江坂町１−１" %>
           </div>
-          
+
           <div class="input-group mb-3 mt-4">
             <div class="input-group-prepend">
               <span class="input-group-text" aria-hidden="true">紹介文</span>
             </div>
           <%= f.text_field :introduction, class:"form-control", placeholder:"例：遊具が豊富でお子様連れに人気の公園です" %>
           </div>
-          
+
           <div class="input-group mb-3 mt-4">
             <div class="input-group-prepend">
               <span class="input-group-text" aria-hidden="true">エリア</span>
             </div>
           <%= f.text_field :area, class:"form-control", placeholder:"例：吹田市" %>
           </div>
-          
+
           <%= f.submit '投稿', class:"btn btn-lg btn-block btn-secondary" %>
 　　　　<% end %>
-        
-        
+
+
       </div>
     </div>
   </div>
 </div>
-        
-        
+
+
 

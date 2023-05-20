@@ -3,6 +3,9 @@ class ParkComment < ApplicationRecord
   belongs_to :customer
   belongs_to :park
 
+  validates :comment, presence: true
+  validates :star, presence: true
+
 
   def avg_score
     unless self.comments.empty?

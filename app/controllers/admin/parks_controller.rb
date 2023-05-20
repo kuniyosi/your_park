@@ -4,8 +4,11 @@ class Admin::ParksController < ApplicationController
   def new
     @park = Park.new
     if params[:tag]
-      Tag.create(name: params[:tag])
-      redirect_to admin_parks_path
+      if Tag.create(name: params[:tag])
+         redirect_to admin_parks_path
+      else
+         render admin_parks_path
+      end
     end
   end
 
@@ -32,10 +35,6 @@ class Admin::ParksController < ApplicationController
       @parks.uniq!
     end
 
-    @park = Park.new
-    if params[:tag]
-      Tag.create(name: params[:tag])
-    end
   end
 
 
@@ -48,7 +47,7 @@ class Admin::ParksController < ApplicationController
     if @park.update(park_params)
        redirect_to admin_park_path(@park)
     else
-      render admin_edit_path
+      render :edit
     end
   end
 

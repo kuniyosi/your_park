@@ -5,15 +5,15 @@
         <%= @customer.name %>さんの<br>
         ページです
       </h2>
-      
+
       <table class='table'>
         <tr><%= image_tag @customer.get_profile_image(100,100) %></tr>
-        
+
         <tr>
 	        <th>name</th>
 	        <th><%= @customer.name %></th>
         </tr>
-        
+
         <tr>
 	        <th>introduction</th>
 	        <th><%= @customer.introduction %></th>
@@ -25,12 +25,12 @@
         </tr>
         <tr>
           <th>
-           <%= link_to "会員削除", admin_customer_path(@customer), method: :delete, class: "btn btn-outline-danger" %>
+           <%= link_to "会員削除", admin_customer_path(@customer), method: :delete, class: "btn btn-outline-danger",  "data-confirm" => "本当に削除しますか？"  %>
           </th>
         </tr>
       </table>
     </div>
-    
+
     <div class = "col-md-8 offset-md-1">
       <div class="card-list-container py-5">
       <h4>お気に入り一覧</h4>
@@ -38,7 +38,7 @@
           <% @favorite_list.each do |park| %>
           <div class="card w-50 mx-auto mt-4 shadow-lg">
             <%= image_tag park.get_image(150,150),size: "150x150", class:"card-img-top"; %>
-            
+
             <div class="card-body">
               <div class="row">
                 <div class="col-10">
@@ -54,12 +54,12 @@
                 </div>
               </div>
             </div>
-            
+
           </div>
         <% end %>
       <% end %>
-      
-      
+
+
     </div>
   </div>
 </div>
