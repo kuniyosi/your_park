@@ -2,6 +2,16 @@
   <div class="row no-gutters">
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
       <h5 class="text-light bg-secondary p-4 mb-0">新規投稿フォーム</h5>
+
+      <% if @park.errors.any? %>
+        <%= @park.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @park.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
       <div class="form-body p-4">
 
         <%= form_with model: [:admin,@park], local:true do |f| %>

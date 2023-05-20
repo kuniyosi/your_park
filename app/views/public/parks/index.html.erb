@@ -1,38 +1,57 @@
 <div class="container">
   <div class="row">
-    <div class="col-3　mt-4">
+    <div class="col-3 my-4">
      <%= render 'public/parks/tag' %>
     </div>
     <div class = "col-9 mt-4">
       <h3 class="mb-4 text-center">公園一覧</h3>
-      <div class="row">
 
-　　　<% @parks.each do |park| %>
-　　　<div class="col-3">
-      <div class="card">
-        <%= link_to park_path(park.id) do %>
-          <%= image_tag park.get_image(150,150), class:"img-fluid" %>
-        <% end %>
 
-    　　<div class="card-body">
-         <p class="card-title">
-           <%= park.name %>
-         </p>
-         <p class="card-subtitle">
-           <%= link_to park.area, search_park_path(keyword: park.area) %>
-         </p>
-         <p class="card-average">
-          <%= render "public/park_comments/star_average", park: park %>
-         </p>
-         <p class="card-count">
-           <%= link_to "#{park.park_comments.count} コメント", park_path(park.id) %>
-         </p>
-        </div>
-      </div>
-     </div>
+<% if @parks.empty? %>
+          <div class = 'text-center'>
+            <p>該当する公園が見つかりませんでした。</p>
+          </div>
+        <% else %>
+        <table class='table table-hover table-inverse table-dark table-striped'>
+       <thead>
+        <tr class = "text-center">
+        <th></th>
+        <th>公園名</th>
+        <th>エリア</th>
+        <th>平均点</th>
+        <th>お気に入り登録数</th>
+        </tr>
+      </thead>
+       <tbody>
+<% @parks.each do |park| %>
+<tr class = "text-center">
+ <td>
+  <%= link_to admin_park_path(park.id) do %>
+    <%= image_tag park.get_image(150,150), size:'150x100' %>
+  <% end %>
+ </td>
+ <td>
+   <%=link_to park.name,park_path(park.id)  %>
+   </td>
+  <td>
+    <%= link_to park.area, search_park_path(keyword: park.area) %>
+  </td>
+<td>
+   <%= render "public/park_comments/star_average", park: park %>
+</td>
+<td id = "favorite_<%= park.id %>">
+  <%= render "public/favorites/favorite", park: park %>
+</td>
+</tr>
+<% end %>
+
+</tbody>
+</table>
 
 <% end %>
-    </div>
-  </div>
+
 </div>
+</div>
+</div>
+
 

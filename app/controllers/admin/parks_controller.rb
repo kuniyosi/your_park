@@ -1,4 +1,5 @@
 class Admin::ParksController < ApplicationController
+  before_action :authenticate_admin_admin!
 
   def new
     @park = Park.new
@@ -30,7 +31,7 @@ class Admin::ParksController < ApplicationController
       end
       @parks.uniq!
     end
-    
+
     @park = Park.new
     if params[:tag]
       Tag.create(name: params[:tag])

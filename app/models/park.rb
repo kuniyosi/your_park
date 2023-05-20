@@ -7,6 +7,12 @@ class Park < ApplicationRecord
 
   has_one_attached :image
 
+  validates :name, presence: true
+  validates :introduction, presence: true
+  validates :area, presence: true
+  validates :address, presence: true
+  validates :image, presence: true
+
   def self.search(search_word)
     Park.where(['area LIKE ?', "#{search_word}"])
   end

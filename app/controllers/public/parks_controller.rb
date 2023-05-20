@@ -1,4 +1,5 @@
 class Public::ParksController < ApplicationController
+  before_action :authenticate_customer!
 
   def show
     @park = Park.find(params[:id])
