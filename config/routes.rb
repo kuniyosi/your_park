@@ -35,8 +35,6 @@ Rails.application.routes.draw do
 
     resources :customers, only: [:index, :show, :edit, :update, :destroy]
 
-    get '', to: 'homes#top'
-
     get "search_park" => "parks#search_park"
 
   end
