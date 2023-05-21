@@ -29,7 +29,7 @@
        </li>
       </ul>
       <div id = "comments_index_<%= @park.id %>">
-      <%= render "admin/park_comments/comments_index", park: @park %>
+      <%= render "admin/park_comments/comments_index", park: @park, park_comments: @park_comments %>
      </div>
    </div>
    <div class="col-2"></div>

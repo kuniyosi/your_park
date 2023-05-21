@@ -23,10 +23,11 @@ class Admin::ParksController < ApplicationController
 
   def show
     @park = Park.find(params[:id])
+    @park_comments = @park.park_comments.page(params[:page])
   end
 
   def index
-    @parks = Park.all
+    @parks = Park.page(params[:page])
     if params[:tag_ids]
       @parks = []
       params[:tag_ids].each do |key, value|

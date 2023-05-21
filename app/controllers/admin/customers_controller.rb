@@ -2,12 +2,12 @@ class Admin::CustomersController < ApplicationController
   before_action :authenticate_admin_admin!
 
   def index
-    @customers = Customer.all
+    @customers = Customer.page(params[:page])
   end
 
   def show
     @customer = Customer.find(params[:id])
-    @parks = @customer.parks
+    @parks = @customer.parks.page(params[:page])
 
     favorites = Favorite.where(customer_id: @customer.id).pluck(:park_id)
     @favorite_list = Park.find(favorites)
