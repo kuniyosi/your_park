@@ -61,6 +61,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
+  def after_sign_in_path_for(resource)
+    customer_path(current_customer.id)
+  end
+
   protected
 
   def configure_permitted_parameters

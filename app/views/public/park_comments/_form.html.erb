@@ -1,3 +1,8 @@
+<% if park.park_commented_by?(current_customer) %>
+<p>コメント、レビューは一つの公園につき一回です</p>
+
+<% else %>
+
 <div class="form-group">
 <%= form_with model: [park, park_comment],local: false do |f| %>
   <%= f.text_area :comment,  class: "form-control", rows: '5', placeholder: "コメントをここに" %>
@@ -33,3 +38,4 @@
 
 <% end %>
 
+<% end %>

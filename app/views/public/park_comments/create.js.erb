@@ -1,5 +1,0 @@
-$("#comments_count_<%= @comment.park_id %>").html("<%= j(render "public/park_comments/comments_count", park: @comment.park) %>")
-$("#comments_index_<%= @comment.park_id %>").html("<%= j(render "public/park_comments/comments_index", park: @comment.park) %>")
-$("#comment_form_<%= @comment.park_id %>").html("<%= j(render "public/park_comments/form", park: @comment.park, park_comment: @park_comment) %>")
-$("#comment_form_<%= @comment.park_id %>").val("")
-

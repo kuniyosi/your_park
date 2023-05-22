@@ -4,13 +4,24 @@ class Public::ParkCommentsController < ApplicationController
     @park = Park.find(params[:park_id])
     @comment = current_customer.park_comments.new(park_comment_params)
     @comment.park_id = @park.id
-    @comment.save
-    @park_comment = ParkComment.new
+    if @comment.save
+       flash[:notice] = "コメントを投稿しました"
+       redirect_to request.referer
+    else
+       flash[:notice] = "コメントの投稿に失敗しました"
+       redirect_to request.referer
+    end
   end
 
   def destroy
     @comment = ParkComment.find(params[:id])
-    @comment.destroy
+    if @comment.destroy
+       flash[:notice] = "コメントを削除しました"
+       redirect_to request.referer
+    else
+       flash[:notice] = "コメントの削除に失敗しました"
+       redirect_to request.referer
+    end
   end
 
   private

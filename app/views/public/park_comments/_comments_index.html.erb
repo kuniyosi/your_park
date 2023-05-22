@@ -9,7 +9,7 @@
     </div>
        <div class="col-md-10">
           <p class="card-title ml-5">
-            <%= park_comment.customer.name %>
+            <%= link_to park_comment.customer.name, customer_path(park_comment.customer.id) %>
           </p>
           <p class = "card-text ml-5">
             <%= park_comment.comment %>
@@ -21,7 +21,7 @@
           </ul>
           <div class="card-body">
             <% if park_comment.customer == current_customer  %>
-              <%= link_to "削除", park_park_comment_path(park_comment.park, park_comment), method: :delete,  remote: true %>
+              <%= link_to "削除", park_park_comment_path(park_comment.park, park_comment), method: :delete, class: "btn btn-outline-danger" %>
             <% end %>
           </div>
       </div>

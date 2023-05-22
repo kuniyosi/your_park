@@ -18,12 +18,24 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
+      flash[:notice] = "編集に成功しました"
       redirect_to customer_path(@customer)
     else
+      flash[:notice] = "編集に失敗しました"
       render :edit
     end
   end
 
+  def destroy
+    @customer = Customer.find(params[:id])
+    if @customer.destroy
+       flash[:notice] = "会員登録を削除しました"
+       redirect_to :root
+    else
+       flash[:notice] = "会員登録の削除に失敗しました"
+       render customer_path(@customer)
+    end
+  end
 
  private
 
@@ -34,6 +46,7 @@ class Public::CustomersController < ApplicationController
   def ensure_guest_customer
     @customer = Customer.find(params[:id])
     if @customer.name == "guest"
+       flash[:notice] = "ログインに成功しました"
       redirect_to customer_path(current_customer)
     end
   end

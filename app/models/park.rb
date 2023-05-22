@@ -28,5 +28,9 @@ class Park < ApplicationRecord
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)
   end
+  
+  def park_commented_by?(customer)
+    park_comments.exists?(customer_id: customer.id)
+  end
 
 end

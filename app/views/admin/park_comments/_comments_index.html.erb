@@ -10,7 +10,7 @@
 
     <div class="col-md-10">
           <p class="card-title ml-5">
-            <%= park_comment.customer.name %>
+            <%= link_to park_comment.customer.name, customer_path(park_comment.customer.id) %>
           </p>
           <ul class="list-group list-group-flush">
             <li class="list-group-item"><%= park_comment.created_at.strftime('%Y/%m/%d') %></li>
@@ -18,7 +18,7 @@
             <li class="list-group-item" id="star_<%= park_comment.id%>"></li>
           </ul>
           <div class="card-body">
-            <%= link_to "削除", admin_park_park_comment_path(park_comment.park, park_comment), method: :delete, remote: true %>
+            <%= link_to "削除", admin_park_park_comment_path(park_comment.park, park_comment), method: :delete,class: "btn btn-outline-danger", "data-confirm" => "本当に削除しますか？" %>
           </div>
         </div>
       </div>

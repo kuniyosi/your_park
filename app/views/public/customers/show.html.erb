@@ -1,4 +1,7 @@
 <div class="container px-5 px-sm-0">
+  <div>
+    <%= flash[:notice] %>
+  </div>
   <div class="row">
     <div class="col-md-3 mt-5">
       <h2>
@@ -39,8 +42,14 @@
       </table>
     </div>
 
+    
     <div class = "col-md-8 offset-md-1">
       <div class="card-list-container py-5">
+        <% if @favorite_list.empty? %>
+          <div class = 'text-center'>
+            <p>お気に入りがまだ登録されていません。</p>
+          </div>
+      <% else %>
       <h4>お気に入り一覧</h4>
         <% if @favorite_list.present? %>
           <% @favorite_list.each do |park| %>
@@ -67,6 +76,7 @@
         <% end %>
       <% end %>
      <%= paginate @favorite_list %>
+     <% end %>
 
     </div>
   </div>

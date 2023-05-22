@@ -15,8 +15,10 @@ class Admin::ParksController < ApplicationController
   def create
     @park = Park.new(park_params)
     if @park.save
+       flash[:notice] = "投稿に成功しました"
        redirect_to admin_parks_path
     else
+       flash[:notice] = "投稿に失敗しました"
        render new_admin_park_path
     end
   end
@@ -46,16 +48,23 @@ class Admin::ParksController < ApplicationController
   def update
     @park = Park.find(params[:id])
     if @park.update(park_params)
+       flash[:notice] = "編集に成功しました"
        redirect_to admin_park_path(@park)
     else
+      flash[:notice] = "編集に失敗しました"
       render :edit
     end
   end
 
   def destroy
     @park = Park.find(params[:id])
-    @park.destroy
-    redirect_to admin_parks_path
+    if @park.destroy
+       flash[:notice] = "投稿を削除しました"
+       redirect_to admin_parks_path
+    else
+       flash[:notice] = "削除に失敗しました"
+       redirect_to admin_park_path(@park)
+    end
   end
 
   def search_park
