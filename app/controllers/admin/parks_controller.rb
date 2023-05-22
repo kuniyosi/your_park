@@ -33,9 +33,8 @@ class Admin::ParksController < ApplicationController
       params[:tag_ids].each do |key, value|
         @parks += Tag.find_by(name: key).parks if value == "1"
       end
-      @parks.uniq!
+      @parks = @parks.uniq!
     end
-
   end
 
 
@@ -61,6 +60,7 @@ class Admin::ParksController < ApplicationController
   def search_park
     @park = Park.new
     @parks = Park.search(params[:keyword])
+    @parks = @parks.page(params[:page])
   end
 
   private

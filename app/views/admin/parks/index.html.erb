@@ -1,7 +1,7 @@
 <div class="container px-5 px-sm-0">
-  
+
   <div class="row">
-    <div class="col-3">
+    <div class="col-3 my-4">
       <%= render 'admin/parks/tag_index' %>
 
       <%= render 'admin/parks/tag_new' %>
@@ -47,10 +47,12 @@
 </tr>
 <% end %>
 
+
 </tbody>
 </table>
 
 <% end %>
+<%= paginate @parks %>
 
 </div>
 </div>

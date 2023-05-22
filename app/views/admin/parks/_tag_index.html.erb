@@ -1,9 +1,9 @@
-<div class="card mt-4" style="width: 15rem;">
+<div class="card" style="width: 15rem;">
   <div class="card-header bg-secondary text-light text-center">
     タグキーワード一覧
   </div>
 
-  <%= form_tag({controller:"parks",action:"index"}, method: :get) do %>
+  <%= form_tag({controller:"admin/parks",action:"index"}, method: :get) do %>
 
   <ul class="list-group list-group-flush">
 
