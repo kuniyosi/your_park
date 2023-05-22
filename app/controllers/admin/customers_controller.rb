@@ -11,7 +11,7 @@ class Admin::CustomersController < ApplicationController
 
     favorites = Favorite.where(customer_id: @customer.id).pluck(:park_id)
     @favorite_list = Park.find(favorites)
-    @favorite_list = Kaminari.paginate_array(@favorite_list).page(params[:page]).per(10)
+    @favorite_list = Kaminari.paginate_array(@favorite_list).page(params[:page]).per(5)
   end
 
   def edit

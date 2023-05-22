@@ -34,6 +34,7 @@ class Admin::ParksController < ApplicationController
         @parks += Tag.find_by(name: key).parks if value == "1"
       end
       @parks = @parks.uniq!
+      @parks = Kaminari.paginate_array(@parks).page(params[:page]).per(5)
     end
   end
 
@@ -58,7 +59,6 @@ class Admin::ParksController < ApplicationController
   end
 
   def search_park
-    @park = Park.new
     @parks = Park.search(params[:keyword])
     @parks = @parks.page(params[:page])
   end

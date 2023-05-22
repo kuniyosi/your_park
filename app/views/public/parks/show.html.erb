@@ -28,7 +28,7 @@
        </li>
       </ul>
       <div id = "comments_index_<%= @park.id %>">
-      <%= render "public/park_comments/comments_index", park: @park %>
+      <%= render "public/park_comments/comments_index", park: @park, park_comments: @park_comments %>
      </div>
      <div id = "comment_form_<%= @park.id %>" class = "text-center">
       <%= render "public/park_comments/form", park: @park, park_comment: @park_comment %>

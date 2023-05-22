@@ -1,6 +1,6 @@
 <div class="card-list-container my-5">
   <h4>コメント一覧</h4>
-<% park.park_comments.each do |park_comment| %>
+<% park_comments.each do |park_comment| %>
 
 <div class="card-body">
   <div class="row">
@@ -27,5 +27,9 @@
       </div>
      </div>
    </div>
+
+
 <% end %>
+<%= paginate park_comments %>
+
 </div>
