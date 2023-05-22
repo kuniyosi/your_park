@@ -4,57 +4,19 @@
   </div>
 
   <div class="row">
-    <div class="col-3 my-4">
+    <div class="col-md-3 my-4">
       <%= render 'admin/parks/tag_index' %>
 
       <%= render 'admin/parks/tag_new' %>
 
     </div>
 
-<div class = "col-8  offset-1 mt-4">
+<div class = "col-md-8  offset-1 mt-4">
       <h3 class="mb-4 text-center">公園一覧</h3>
 
+<%= render 'admin/parks/parks_index' %>
 
 
-<% if @parks.empty? %>
-          <div class = 'text-center'>
-            <p>該当する公園が見つかりませんでした。</p>
-          </div>
-        <% else %>
-        <table class='table table-hover table-inverse table-dark table-striped'>
-       <thead>
-        <tr class = "text-center">
-        <th></th>
-        <th>公園名</th>
-        <th>エリア</th>
-        <th>平均点</th>
-        </tr>
-      </thead>
-       <tbody>
-<% @parks.each do |park| %>
-<tr class = "text-center">
- <td>
-  <%= link_to admin_park_path(park.id) do %>
-    <%= image_tag park.get_image(150,150), size:'150x100' %>
-  <% end %>
- </td>
- <td>
-   <%=link_to park.name,admin_park_path(park.id)  %>
-   </td>
-  <td>
-    <%= link_to park.area, admin_search_park_path(keyword: park.area) %>
-  </td>
-<td>
-   <%= render "admin/park_comments/star_average", park: park %>
-</td>
-</tr>
-<% end %>
-
-
-</tbody>
-</table>
-
-<% end %>
 <%= paginate @parks %>
 
 </div>

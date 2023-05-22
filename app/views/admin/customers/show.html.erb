@@ -1,69 +1,58 @@
 <div class="container px-5 px-sm-0">
+
   <div>
     <%= flash[:notice] %>
   </div>
+
   <div class="row">
+
     <div class="col-md-3">
+
       <h2>
         <%= @customer.name %>さんの<br>
         ページです
       </h2>
 
       <table class='table'>
+
         <tr><%= image_tag @customer.get_profile_image(100,100) %></tr>
 
         <tr>
-	        <th>name</th>
-	        <th><%= @customer.name %></th>
+          <th>name</th>
+          <th><%= @customer.name %></th>
         </tr>
 
         <tr>
-	        <th>introduction</th>
-	        <th><%= @customer.introduction %></th>
+          <th>introduction</th>
+          <th><%= @customer.introduction %></th>
         </tr>
+
         <tr>
           <th>
-           <%= link_to "会員編集", edit_admin_customer_path(@customer), class: "btn btn-outline-success" %>
+            <%= link_to "会員編集", edit_admin_customer_path(@customer), class: "btn btn-outline-success" %>
           </th>
         </tr>
+
         <tr>
           <th>
            <%= link_to "会員削除", admin_customer_path(@customer), method: :delete, class: "btn btn-outline-danger",  "data-confirm" => "本当に削除しますか？"  %>
           </th>
         </tr>
+
       </table>
+
     </div>
 
     <div class = "col-md-8 offset-md-1">
+
       <div class="card-list-container py-5">
-      <h4>お気に入り一覧</h4>
-        <% if @favorite_list.present? %>
-          <% @favorite_list.each do |park| %>
-          <div class="card w-50 mx-auto mt-4 shadow-lg">
-            <%= image_tag park.get_image(150,150),size: "150x150", class:"card-img-top"; %>
 
-            <div class="card-body">
-              <div class="row">
-                <div class="col-10">
-                  <p class="card-title">
-                    <%= link_to park.name, park_path(park.id) %>
-                  </p>
-                  <p class="card-title">
-                    <%= link_to park.area, search_park_path(keyword: park.area) %>
-                  </p>
-                  <p class="card-title">
-                    <%= render "public/park_comments/star_average", park: park %>
-                  </p>
-                </div>
-              </div>
-            </div>
+        <%= render 'layouts/favorites_list' %>
 
-          </div>
-        <% end %>
-      <% end %>
-      <%= paginate @favorite_list %>
-
+      </div>
 
     </div>
+
   </div>
+
 </div>

@@ -1,42 +1,55 @@
 <div class="container px-5 px-sm-0">
+
   <div>
     <%= flash[:notice] %>
   </div>
+
   <div class="row">
-    <div class = "col-md-2"></div>
-    <div class = "col-md-8 mt-4 text-center">
+
+    <div class = "col-md-8 mt-4 mx-auto text-center">
+
       <h3 class="mb-4 text-left">会員一覧</h3>
 
-<table class='table table-hover table-inverse table-dark table-striped'>
-       <thead>
-        <tr class = "text-center">
-        <th></th>
-        <th>名前</th>
-        <th>自己紹介</th>
-        </tr>
-      </thead>
-       <tbody>
-<% @customers.each do |customer| %>
-<tr class = "mx-auto">
- <td>
-  <%= link_to admin_customer_path(customer.id) do %>
-    <%= image_tag customer.get_profile_image(100,100) %>
-  <% end %>
- </td>
- <td>
-   <%=link_to customer.name,admin_customer_path(customer.id)  %>
-   </td>
-  <td>
-    <%= customer.introduction %>
-  </td>
-</tr>
-<% end %>
-<%= paginate @customers %>
+      <table class='table table-hover table-inverse table-dark table-striped'>
 
-</tbody>
-</table>
+        <thead>
+          <tr class = "text-center">
+            <th></th>
+            <th>名前</th>
+            <th>自己紹介</th>
+          </tr>
+        </thead>
 
-</div>
-<div class = "col-md-2"></div>
-</div>
+        <tbody>
+          <% @customers.each do |customer| %>
+
+            <tr class = "mx-auto">
+
+              <td>
+                <%= link_to admin_customer_path(customer.id) do %>
+                  <%= image_tag customer.get_profile_image(100,100) %>
+                <% end %>
+              </td>
+
+              <td>
+                <%=link_to customer.name,admin_customer_path(customer.id)  %>
+              </td>
+
+              <td>
+                <%= customer.introduction %>
+              </td>
+
+            </tr>
+          <% end %>
+
+          <%= paginate @customers %>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
 </div>
