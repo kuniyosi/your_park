@@ -1,4 +1,5 @@
 <div class="card" style="width: 15rem;">
+
   <div class="card-header bg-secondary text-light text-center">
     タグキーワード一覧
   </div>
@@ -8,10 +9,12 @@
   <ul class="list-group list-group-flush">
 
     <% Tag.all.each do |t| %>
+
       <li class="list-group-item">
         <%= check_box :tag_ids, t.name, class: 'mr-2' %>
         <%= t.name %>
       </li>
+
     <% end %>
 
       <li class="list-group-item text-center">
@@ -19,5 +22,7 @@
       </li>
 
   </ul>
+
   <% end %>
+
 </div>

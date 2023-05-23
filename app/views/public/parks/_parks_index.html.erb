@@ -14,6 +14,7 @@
         <th>公園名</th>
         <th>エリア</th>
         <th>平均点</th>
+        <th>お気に入り登録数</th>
       </tr>
     </thead>
 
@@ -23,21 +24,25 @@
         <tr class = "text-center">
 
           <td>
-            <%= link_to admin_park_path(park.id) do %>
+            <%= link_to park_path(park.id) do %>
               <%= image_tag park.get_image(150,150), size:'150x100' %>
             <% end %>
           </td>
 
           <td>
-            <%=link_to park.name,admin_park_path(park.id)  %>
+            <%=link_to park.name,park_path(park.id)  %>
           </td>
 
           <td>
-            <%= link_to park.area, admin_search_park_path(keyword: park.area) %>
+            <%= link_to park.area, search_park_path(keyword: park.area) %>
           </td>
 
           <td>
-            <%= render "admin/park_comments/star_average", park: park %>
+            <%= render "public/park_comments/star_average", park: park %>
+          </td>
+
+          <td id = "favorite_<%= park.id %>">
+            <%= render "public/favorites/favorite", park: park %>
           </td>
 
         </tr>

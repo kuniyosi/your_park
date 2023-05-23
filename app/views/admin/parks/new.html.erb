@@ -1,67 +1,77 @@
-<div class="container">
-  <div class="row no-gutters">
-    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
-      <h5 class="text-light bg-secondary p-4 mb-0">新規投稿フォーム</h5>
+<div class = "container">
 
-      <% if @park.errors.any? %>
-        <%= @park.errors.count %>件のエラーが発生しました
-        <ul>
-          <% @park.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
+  <div class = "row no-gutters">
 
-      <div class="form-body p-4">
+    <div class = "col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+
+      <h5 class = "text-light bg-secondary p-4 mb-0">新規投稿フォーム</h5>
+
+        <% if @park.errors.any? %>
+          <%= @park.errors.count %>件のエラーが発生しました
+          <ul>
+            <% @park.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <div class = "form-body p-4">
 
         <%= form_with model: [:admin,@park], local:true do |f| %>
+
           <%= f.file_field :image, accept: "image/*", class: "w-100" %>
 
-          <div class="input-group mb-3 mt-4">
-            <div class="input-group-prepend">
-              <span class="input-group-text" aria-hidden="true">公園名</span>
+          <div class = "input-group mb-3 mt-4">
+            <div class = "input-group-prepend">
+              <span class = "input-group-text" aria-hidden = "true">公園名</span>
             </div>
-          <%= f.text_field :name, class:"form-control", placeholder:"例：江坂公園" %>
+          <%= f.text_field :name, class: "form-control", placeholder:"例：江坂公園" %>
           </div>
 
-          <div class="input-group mb-3 mt-4">
-            <div class="input-group-prepend">
-              <span class="input-group-text" aria-hidden="true">住所</span>
+          <div class = "input-group mb-3 mt-4">
+            <div class = "input-group-prepend">
+              <span class = "input-group-text" aria-hidden = "true" >住所</span>
             </div>
-          <%= f.text_field :address, class:"form-control", placeholder:"例：吹田市江坂町１−１" %>
+          <%= f.text_field :address, class: "form-control", placeholder: "例：吹田市江坂町１−１" %>
           </div>
 
-          <div class="input-group mb-3 mt-4">
-            <div class="input-group-prepend">
-              <span class="input-group-text" aria-hidden="true">紹介文</span>
+          <div class = "input-group mb-3 mt-4">
+            <div class = "input-group-prepend">
+              <span class = "input-group-text" aria-hidden = "true">紹介文</span>
             </div>
-          <%= f.text_field :introduction, class:"form-control", placeholder:"例：遊具が豊富でお子様連れに人気の公園です" %>
+          <%= f.text_field :introduction, class: "form-control", placeholder:"例：遊具が豊富でお子様連れに人気の公園です" %>
           </div>
 
-          <div class="input-group mb-3 mt-4">
-            <div class="input-group-prepend">
-              <span class="input-group-text" aria-hidden="true">エリア</span>
+          <div class = "input-group mb-3 mt-4">
+            <div class = "input-group-prepend">
+              <span class = "input-group-text" aria-hidden = "true">エリア</span>
             </div>
-          <%= f.text_field :area, class:"form-control", placeholder:"例：吹田市" %>
+          <%= f.text_field :area, class: "form-control", placeholder:"例：吹田市" %>
           </div>
 
           <div class = "mt-5">
-            <h4>タグ</h4>
-              <ul class="list-group list-group-flush">
-    　　　　　　　　<%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-         　　 　　<li class="list-group-item">
-                  <%= tag.label class: 'form-check-label' do %>
-　　　　            <%= tag.check_box class: 'form-check-input' %><%= tag.text %>
-　　　　          <% end %>
-　　　    　　  </li>
-  　　　　　　　　  　<% end %>
-　　　　      </ul>
-　　　　  </div>
 
-　　　    <%= f.submit '投稿', class:"btn btn-lg btn-block btn-secondary" %>
-　　　　<% end %>
+            <h4>タグ</h4>
+
+            <ul class = "list-group list-group-flush my-5">
+              <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+                <li class = "list-group-item mx-3">
+                  <%= tag.label class: 'form-check-label' do %>
+                    <%= tag.check_box class: 'form-check-input' %><%= tag.text %>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+
+          </div>
+
+          <%= f.submit '投稿', class: "my-5 btn btn-lg btn-block btn-secondary" %>
+          <% end %>
 
       </div>
+
     </div>
+
   </div>
+
 </div>

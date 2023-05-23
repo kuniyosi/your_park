@@ -1,31 +1,41 @@
 <div class="card-list-container my-5">
+
   <h4>コメント一覧</h4>
-<% park_comments.each do |park_comment| %>
 
-<div class="card-body">
-  <div class="row">
-    <div class="col-md-2">
-      <%= image_tag park_comment.customer.get_profile_image(100,100), class:"mt-3 rounded-circle"; %>
-    </div>
+    <% park_comments.each do |park_comment| %>
 
-    <div class="col-md-10">
+    <div class="card-body">
+
+      <div class="row">
+
+        <div class="col-md-2">
+          <%= image_tag park_comment.customer.get_profile_image(100,100), class:"mt-3 rounded-circle"; %>
+        </div>
+
+        <div class="col-md-10">
+
           <p class="card-title ml-5">
             <%= link_to park_comment.customer.name, customer_path(park_comment.customer.id) %>
           </p>
+
           <ul class="list-group list-group-flush">
             <li class="list-group-item"><%= park_comment.created_at.strftime('%Y/%m/%d') %></li>
             <li class="list-group-item">評価 :<%= park_comment.star %>点</li>
             <li class="list-group-item" id="star_<%= park_comment.id%>"></li>
           </ul>
+
           <div class="card-body">
             <%= link_to "削除", admin_park_park_comment_path(park_comment.park, park_comment), method: :delete,class: "btn btn-outline-danger", "data-confirm" => "本当に削除しますか？" %>
           </div>
+
         </div>
+
       </div>
+
     </div>
 
+  <% end %>
 
-<% end %>
-<%= paginate park_comments %>
+  <%= paginate park_comments %>
 
-  </div>
+</div>

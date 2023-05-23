@@ -4,39 +4,11 @@
 
 <h2 class="mb-4">絞り込み表示</h2>
 
-<table class='table table-hover table-inverse table-dark table-striped'>
-       <thead>
-        <tr class = "text-center">
-        <th></th>
-        <th>公園名</th>
-        <th>エリア</th>
-        <th>平均点</th>
-        </tr>
-      </thead>
-       <tbody>
-         <% @parks.each do |park| %>
-        <tr class = "text-center">
- <td>
-  <%= link_to park_path(park.id) do %>
-    <%= image_tag park.get_image(150,150), size:'150x100' %>
-  <% end %>
- </td>
- <td>
-   <%=link_to park.name,park_path(park.id)  %>
-   </td>
-  <td>
-    <%= link_to park.area, search_park_path(keyword: park.area) %>
-  </td>
-<td>
-   <%= render "public/park_comments/star_average", park: park %>
-</td>
-</tr>
-<% end %>
-      </tbody>
-</table>
+<%= render 'public/parks/parks_index', parks: @parks %>
+
 <%= paginate @parks %>
 <div>
-  
+
 
   </div>
 </div>
