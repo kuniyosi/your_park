@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   scope module: :public do
 
     devise_for :customers,skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: 'public/sessions'
+      registrations: "public/registrations",
+      sessions: 'public/sessions'
     }
 
     resources :parks, only: [:index, :show] do
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
     root to: 'homes#top'
     get '/about', to: 'homes#about', as: 'about'
+
     get "search_park" => "parks#search_park"
 
   end
@@ -26,7 +27,7 @@ Rails.application.routes.draw do
   namespace :admin do
 
     devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-    sessions: "admin/sessions"
+      sessions: "admin/sessions"
     }
 
     resources :parks, only: [:index, :show, :new, :edit, :create, :update, :destroy] do
@@ -42,7 +43,5 @@ Rails.application.routes.draw do
   devise_scope :customer do
     post 'customers/guest_sign_in', to: 'customers/sessions#guest_sign_in'
   end
-
-
 
 end

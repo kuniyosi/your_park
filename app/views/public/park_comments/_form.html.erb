@@ -1,41 +1,44 @@
 <% if park.park_commented_by?(current_customer) %>
-<p>コメント、レビューは一つの公園につき一回です</p>
+
+  <p>コメント、レビューは一つの公園につき一回です</p>
 
 <% else %>
 
-<div class="form-group">
-<%= form_with model: [park, park_comment],local: false do |f| %>
-  <%= f.text_area :comment,  class: "form-control", rows: '5', placeholder: "コメントをここに" %>
+  <div class="form-group">
 
+    <%= form_with model: [park, park_comment],local: false do |f| %>
+      <%= f.text_area :comment,  class: "form-control", rows: '5', placeholder: "コメントをここに" %>
 
-<div id="star" class = "text-left">
-    <%= f.label :star,'評価 ' %>
-    <%= f.hidden_field :star, id: :review_star %>
+      <div id="star" class = "text-left">
+        <%= f.label :star,'評価 ' %>
+        <%= f.hidden_field :star, id: :review_star %>
+      </div>
+
+      <script>
+      $(document).on('turbolinks:load', function() {
+        let elem = document.querySelector('#star');
+        if (elem == null) return;
+        elem.innerHTML = ""
+
+        let opt = {
+          size     : 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+
+          scoreName: 'park_comment[star]',
+          half: false,
+        };
+        raty(elem,opt);
+      });
+
+      </script>
+
+      <div class = "text-left">
+        <%= f.submit "送信する", class: "btn btn-primary" %>
+      </div>
+
+    <% end %>
+
   </div>
-<script>
- $(document).on('turbolinks:load', function() {
-  let elem = document.querySelector('#star');
-  if (elem == null) return;
-  elem.innerHTML = ""
-
-  let opt = {
-    size     : 36,
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-
-    scoreName: 'park_comment[star]',
-    half: false,
-   };
-  raty(elem,opt);
- });
-
-</script>
-
-<div class = "text-left">
-<%= f.submit "送信する", class: "btn btn-primary" %>
-</div>
-</div>
-
-<% end %>
 
 <% end %>

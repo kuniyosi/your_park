@@ -11,7 +11,9 @@
   </head>
 
   <body class = "d-flex flex-column vh-100">
+
     <header class="shadow-sm">
+
       <% if customer_signed_in? %>
         <nav class="navbar navbar-expand-lg navbar-light bg-success">
       <% elsif admin_admin_signed_in?%>
@@ -19,85 +21,115 @@
       <% else %>
         <nav class="navbar navbar-expand-lg navbar-light bg-info">
       <% end %>
-        <div class="container">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
+
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
-             <li class = "nav-item">
-               <%= link_to 'マイページ', customer_path(current_customer.id), class: 'bg-light btn mr-3' %>
-             </li>
-             <li class = "nav-item">
-               <%= link_to '公園一覧', parks_path, class: 'bg-light btn mr-3' %>
-             </li>
-             <li class = "nav-item">
-               <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'bg-light btn mr-3' %>
-             </li>
+
+              <li class = "nav-item">
+                <%= link_to 'マイページ', customer_path(current_customer.id), class: 'bg-light btn mr-3' %>
+              </li>
+
+              <li class = "nav-item">
+                <%= link_to '公園一覧', parks_path, class: 'bg-light btn mr-3' %>
+              </li>
+
+              <li class = "nav-item">
+                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'bg-light btn mr-3' %>
+              </li>
+
             <% elsif admin_admin_signed_in? %>
-             <li class = "nav-item">
-               <%= link_to '新規投稿', new_admin_park_path, class: 'bg-light btn mr-3' %>
-             </li>
-             <li class = "nav-item">
-               <%= link_to '会員一覧', admin_customers_path, class: 'bg-light btn mr-3' %>
-             </li>
-             <li class = "nav-item">
-               <%= link_to '公園一覧', admin_parks_path, class: 'bg-light btn mr-3' %>
-             </li>
-             <li class = "nav-item">
-               <%= link_to "ログアウト", destroy_admin_admin_session_path, method: :delete, class: 'bg-light btn mr-3' %>
-             </li>
+
+              <li class = "nav-item">
+                <%= link_to '新規投稿', new_admin_park_path, class: 'bg-light btn mr-3' %>
+              </li>
+
+              <li class = "nav-item">
+                <%= link_to '会員一覧', admin_customers_path, class: 'bg-light btn mr-3' %>
+              </li>
+
+              <li class = "nav-item">
+                <%= link_to '公園一覧', admin_parks_path, class: 'bg-light btn mr-3' %>
+              </li>
+
+              <li class = "nav-item">
+                <%= link_to "ログアウト", destroy_admin_admin_session_path, method: :delete, class: 'bg-light btn mr-3' %>
+              </li>
+
             <% else %>
-             <li class = "nav-item">
-               <%= link_to "新規登録", new_customer_registration_path, class: 'bg-light btn mr-3' %>
-             </li>
-             <li class = "nav-item">
-               <%= link_to "管理者ログイン", admin_admin_session_path, class: 'bg-light btn mr-3' %>
-             </li>
-             <li class = "nav-item">
-               <%= link_to "ログイン", new_customer_session_path, class: 'bg-light btn mr-3' %>
-             </li>
-             <li class = "nav-item">
-               <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post, class: 'bg-light btn mr-3' %>
-             </li>
-             <li class = "nav-item">
-               <%= link_to 'Aboutページ', about_path, class: 'bg-light btn' %>
-             </li>
+
+              <li class = "nav-item">
+                <%= link_to "新規登録", new_customer_registration_path, class: 'bg-light btn mr-3' %>
+              </li>
+
+              <li class = "nav-item">
+                <%= link_to "管理者ログイン", admin_admin_session_path, class: 'bg-light btn mr-3' %>
+              </li>
+
+              <li class = "nav-item">
+                <%= link_to "ログイン", new_customer_session_path, class: 'bg-light btn mr-3' %>
+              </li>
+
+              <li class = "nav-item">
+                <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post, class: 'bg-light btn mr-3' %>
+              </li>
+
+              <li class = "nav-item">
+                <%= link_to 'Aboutページ', about_path, class: 'bg-light btn' %>
+              </li>
+
             <% end %>
           </ul>
         </div>
       </div>
-    </nav>
-  </header>
-  <main class="mb-auto">
-  <%= yield %>
-  </main>
+      </nav>
+    </header>
 
-  <% if customer_signed_in? %>
-    <footer class="bg-success text-white pt-5 pb-4">
-  <% elsif admin_admin_signed_in?%>
-    <footer class="bg-secondary text-white pt-5 pb-4">
-  <% else %>
-    <footer class="bg-info text-white pt-5 pb-4">
-  <% end %>
+    <main class="mb-auto">
+    <%= yield %>
+    </main>
 
-      <div class="container">
-        <div class="row no-gutters">
-          <div class="col-md-8">
-            <h6 class="text-white mt-2 mb-3">Link</h6>
-            <ul class="p-0 list-unstyled">
-              <li>
-                <%= link_to "会社概要", about_path, class: "text-white" %>
-              </li>
-              <li>
-                <a href="" title="License informations" class="text-white">プライバシーポリシー</a>
-              </li>
-            </ul>
-          </div>
+    <% if customer_signed_in? %>
+      <footer class="bg-success text-white pt-5 pb-4">
+    <% elsif admin_admin_signed_in?%>
+      <footer class="bg-secondary text-white pt-5 pb-4">
+    <% else %>
+      <footer class="bg-info text-white pt-5 pb-4">
+    <% end %>
+
+    <div class="container">
+
+      <div class="row no-gutters">
+
+        <div class="col-md-8">
+
+          <h6 class="text-white mt-2 mb-3">Link</h6>
+
+          <ul class="p-0 list-unstyled">
+
+            <li>
+              <%= link_to "会社概要", about_path, class: "text-white" %>
+            </li>
+
+            <li>
+              <a href="" title="License informations" class="text-white">プライバシーポリシー</a>
+            </li>
+
+          </ul>
+
         </div>
-      </div>
-  </footer>
-  </body>
-</html>
 
+      </div>
+
+    </div>
+
+  </footer>
+
+  </body>
+
+</html>

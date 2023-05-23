@@ -31,15 +31,14 @@ class Admin::ParksController < ApplicationController
   def index
     @parks = Park.page(params[:page])
     if params[:tag_ids]
-      @parks = []
-      params[:tag_ids].each do |key, value|
-        @parks += Tag.find_by(name: key).parks if value == "1"
-      end
+       @parks = []
+       params[:tag_ids].each do |key, value|
+         @parks += Tag.find_by(name: key).parks if value == "1"
+       end
       @parks.uniq!
       @parks = Kaminari.paginate_array(@parks).page(params[:page]).per(5)
     end
   end
-
 
   def edit
     @park = Park.find(params[:id])
@@ -51,8 +50,8 @@ class Admin::ParksController < ApplicationController
        flash[:notice] = "編集に成功しました"
        redirect_to admin_park_path(@park)
     else
-      flash[:notice] = "編集に失敗しました"
-      render :edit
+       flash[:notice] = "編集に失敗しました"
+       render :edit
     end
   end
 

@@ -31,4 +31,3 @@ class Public::ParkCommentsController < ApplicationController
   end
 
 end
-

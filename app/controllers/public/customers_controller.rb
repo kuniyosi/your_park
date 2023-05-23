@@ -8,7 +8,7 @@ class Public::CustomersController < ApplicationController
 
     favorites = Favorite.where(customer_id: current_customer.id).pluck(:park_id)
     @favorite_list = Park.find(favorites)
-   @favorite_list = Kaminari.paginate_array(@favorite_list).page(params[:page]).per(5)
+    @favorite_list = Kaminari.paginate_array(@favorite_list).page(params[:page]).per(5)
   end
 
   def edit
@@ -18,11 +18,11 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      flash[:notice] = "編集に成功しました"
-      redirect_to customer_path(@customer)
+       flash[:notice] = "編集に成功しました"
+       redirect_to customer_path(@customer)
     else
-      flash[:notice] = "編集に失敗しました"
-      render :edit
+       flash[:notice] = "編集に失敗しました"
+       render :edit
     end
   end
 
@@ -47,7 +47,7 @@ class Public::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     if @customer.name == "guest"
        flash[:notice] = "ログインに成功しました"
-      redirect_to customer_path(current_customer)
+       redirect_to customer_path(current_customer)
     end
   end
 

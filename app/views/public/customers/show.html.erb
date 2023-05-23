@@ -1,26 +1,32 @@
 <div class="container px-5 px-sm-0">
+  
   <div>
     <%= flash[:notice] %>
   </div>
+  
   <div class="row">
+
     <div class="col-md-3 mt-5">
+
       <h2>
         <%= @customer.name %>さんの<br>
         ページです
       </h2>
 
       <table class='table'>
+
         <tr><%= image_tag @customer.get_profile_image(100,100) %></tr>
 
         <tr>
-	        <th>name</th>
-	        <th><%= @customer.name %></th>
+          <th>name</th>
+          <th><%= @customer.name %></th>
         </tr>
 
         <tr>
-	        <th>introduction</th>
-	        <th><%= @customer.introduction %></th>
+          <th>introduction</th>
+          <th><%= @customer.introduction %></th>
         </tr>
+
         <tr>
           <th class = "mx-auto">
           <% if @customer.name != "guest" %>
@@ -30,23 +36,31 @@
           <% end %>
           </th>
         </tr>
+
         <% if @customer.name != "guest" %>
-        <% if @customer == current_customer %>
-        <tr>
-          <th>
-               <%= link_to "会員削除", customer_path(@customer), method: :delete, class: "btn btn-outline-danger", "data-confirm" => "本当に削除しますか？""削除した場合、データは全て消去されます。"  %>
-          </th>
-        </tr>
+          <% if @customer == current_customer %>
+            <tr>
+              <th>
+                <%= link_to "会員削除", customer_path(@customer), method: :delete, class: "btn btn-outline-danger", "data-confirm" => "本当に削除しますか？""削除した場合、データは全て消去されます。"  %>
+              </th>
+            </tr>
+          <% end %>
         <% end %>
-        <% end %>
+
       </table>
+
     </div>
+
     <div class = "col-md-8 offset-md-1">
 
       <div class="card-list-container py-5">
 
-    <%= render 'layouts/favorites_list' %>
+        <%= render 'layouts/favorites_list' %>
+
+      </div>
 
     </div>
+
   </div>
+
 </div>

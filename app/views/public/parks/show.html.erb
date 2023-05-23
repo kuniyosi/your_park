@@ -1,59 +1,59 @@
 <div class="container my-5">
+
   <div>
     <%= flash[:notice] %>
   </div>
+
   <div class="row">
-    <div class="col-md-2">
-    </div>
-    <div class="col-md-8">
+
+    <div class="col-md-8 mx-auto">
+
       <div class = "my-4">
-      <%= image_tag @park.get_image(750,700), size: "600x400", class: "d-block mx-auto col-md-10" %>
+        <%= image_tag @park.get_image(750,700), size: "600x400", class: "d-block mx-auto col-md-10" %>
       </div>
+
       <h3><strong><%= @park.name %></strong></h3>
+
       <ul class="list-group mt-4">
+
         <li class="list-group-item">
           住所：<%= @park.address %>
         </li>
+
         <li class="list-group-item">
           紹介：<%= @park.introduction %>
         </li>
+
         <li class="list-group-item">
           エリア：<%= link_to @park.area, search_park_path(keyword: @park.area) %>
         </li>
+
         <li class="list-group-item" id = "favorite_<%= @park.id %>">
     　　　　<%= render "public/favorites/favorite", park: @park %>
         </li>
+
         <li class="list-group-item" id = "star_average_<%= @park.id %>">
           <%= render "public/park_comments/star_average", park: @park %>
         </li>
-       <li class="list-group-item" id = "comments_count_<%= @park.id %>">
-         <%= render "public/park_comments/comments_count", park: @park %>
-       </li>
+
+        <li class="list-group-item" id = "comments_count_<%= @park.id %>">
+          <%= render "public/park_comments/comments_count", park: @park %>
+        </li>
+
       </ul>
+
       <div id = "comments_index_<%= @park.id %>">
-      <%= render "public/park_comments/comments_index", park: @park, park_comments: @park_comments %>
-     </div>
-     <div id = "comment_form_<%= @park.id %>" class = "text-center">
-      <%= render "public/park_comments/form", park: @park, park_comment: @park_comment %>
+        <%= render "public/park_comments/comments_index", park: @park, park_comments: @park_comments %>
       </div>
-   </div>
-   <div class="col-2"></div>
 
+      <div id = "comment_form_<%= @park.id %>" class = "text-center">
+        <%= render "public/park_comments/form", park: @park, park_comment: @park_comment %>
+      </div>
 
+    </div>
 
-
-
+  </div>
 
 </div>
 
 <%= render "public/park_comments/star", park: @park %>
-
-
-
-  </div>
-
-
-
-
-
-
