@@ -4,11 +4,8 @@ class Admin::ParksController < ApplicationController
   def new
     @park = Park.new
     if params[:tag]
-      if Tag.create(name: params[:tag])
-         redirect_to admin_parks_path
-      else
-         render admin_parks_path
-      end
+       Tag.create(name: params[:tag])
+       redirect_to admin_parks_path
     end
   end
 

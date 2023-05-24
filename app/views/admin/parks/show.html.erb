@@ -1,9 +1,5 @@
 <div class="container my-5">
 
-  <div>
-    <%= flash[:notice] %>
-  </div>
-
   <div class="row">
 
     <div class="col-md-8 mx-auto">
@@ -37,6 +33,14 @@
 
        <li class="list-group-item" id = "comments_count_<%= @park.id %>">
          <%= render "admin/park_comments/comments_count", park: @park %>
+       </li>
+
+       <li class="list-group-item" id = "comments_count_<%= @park.id %>">
+        タグ：
+        <% @park.tags.each do |tag| %>
+          <%= tag.name %>
+        <% end %>
+
        </li>
 
       </ul>

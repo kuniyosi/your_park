@@ -1,9 +1,5 @@
 <div class="container">
 
-  <div>
-    <%= flash[:notice] %>
-  </div>
-
   <div class="row no-gutters">
 
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
@@ -52,6 +48,18 @@
             </div>
           <%= f.text_field :area, class:"form-control", placeholder:"例：吹田市" %>
           </div>
+          
+          <h4>タグ</h4>
+
+            <ul class = "list-group list-group-flush my-5">
+              <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+                <li class = "list-group-item mx-3">
+                  <%= tag.label class: 'form-check-label' do %>
+                    <%= tag.check_box class: 'form-check-input' %><%= tag.text %>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
 
           <%= f.submit '編集', class:"btn btn-lg btn-block btn-secondary" %>
 　　　　<% end %>

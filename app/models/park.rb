@@ -7,10 +7,10 @@ class Park < ApplicationRecord
 
   has_one_attached :image
 
-  validates :name, presence: true
-  validates :introduction, presence: true
-  validates :area, presence: true
-  validates :address, presence: true
+  validates :name, presence: true, length: { minimum: 2, maximum: 20 }
+  validates :introduction, presence: true, length: { maximum: 50 }
+  validates :area, presence: true, length: { maximum: 10 }
+  validates :address, presence: true, length: {  minimum: 2, maximum: 30 }
   validates :image, presence: true
 
   def self.search(search_word)
@@ -28,7 +28,7 @@ class Park < ApplicationRecord
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)
   end
-  
+
   def park_commented_by?(customer)
     park_comments.exists?(customer_id: customer.id)
   end
