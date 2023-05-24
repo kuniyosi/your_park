@@ -10,7 +10,7 @@
 
   <p>
     <%= link_to park_favorites_path(park), method: :post, remote: true do %>
-      お気に入り登録👍:<%= park.favorites.count %>
+      お気に入り登録:<%= park.favorites.count %>
     <% end %>
   </p>
 

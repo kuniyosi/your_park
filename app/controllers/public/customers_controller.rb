@@ -7,8 +7,8 @@ class Public::CustomersController < ApplicationController
     @parks = @customer.parks
 
     favorites = Favorite.where(customer_id: current_customer.id).pluck(:park_id)
-    @favorite_list = Park.find(favorites)
-    @favorite_list = Kaminari.paginate_array(@favorite_list).page(params[:page]).per(5)
+    @favorites_list = Park.find(favorites)
+    @favorites_list = Kaminari.paginate_array(@favorites_list).page(params[:page]).per(5)
   end
 
   def edit
@@ -29,10 +29,10 @@ class Public::CustomersController < ApplicationController
   def destroy
     @customer = Customer.find(params[:id])
     if @customer.destroy
-       flash[:notice] = "会員登録を削除しました"
+       flash[:notice] = "退会が完了しました"
        redirect_to :root
     else
-       flash[:notice] = "会員登録の削除に失敗しました"
+       flash[:notice] = "退会に失敗しました"
        render customer_path(@customer)
     end
   end

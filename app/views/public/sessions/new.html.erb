@@ -12,7 +12,8 @@
         　<p>メールアドレスと<br>パスワードを入力してください。</p>
       　</div>
 
-　　　　<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
   　　　  　　<%= render "public/shared/error_messages", resource: resource %>
 
 　　　　  <div class="input-group mb-3">

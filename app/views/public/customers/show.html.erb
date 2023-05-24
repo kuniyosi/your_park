@@ -1,21 +1,21 @@
 <div class="container px-5 px-sm-0">
-  
+
+  <h2>
+    <%= @customer.name %>さんのページです
+  </h2>
+
+
   <div>
     <%= flash[:notice] %>
   </div>
-  
+
   <div class="row">
 
     <div class="col-md-3 mt-5">
 
-      <h2>
-        <%= @customer.name %>さんの<br>
-        ページです
-      </h2>
-
       <table class='table'>
 
-        <tr><%= image_tag @customer.get_profile_image(100,100) %></tr>
+        <tr><%= image_tag @customer.get_profile_image(150,150) %></tr>
 
         <tr>
           <th>name</th>
@@ -31,7 +31,7 @@
           <th class = "mx-auto">
           <% if @customer.name != "guest" %>
              <% if @customer == current_customer %>
-               <%= link_to "編集", edit_customer_path(@customer), class: "btn btn-outline-success" %>
+               <%= link_to "編集する", edit_customer_path(@customer), class: "btn btn-outline-success" %>
              <% end %>
           <% end %>
           </th>
@@ -41,7 +41,7 @@
           <% if @customer == current_customer %>
             <tr>
               <th>
-                <%= link_to "会員削除", customer_path(@customer), method: :delete, class: "btn btn-outline-danger", "data-confirm" => "本当に削除しますか？""削除した場合、データは全て消去されます。"  %>
+                <%= link_to "退会する", customer_path(@customer), method: :delete, class: "btn btn-outline-danger", "data-confirm" => "本当に退会しますか？""退会した場合、登録データは全て消去されます。"  %>
               </th>
             </tr>
           <% end %>
@@ -55,7 +55,7 @@
 
       <div class="card-list-container py-5">
 
-        <%= render 'layouts/favorites_list' %>
+        <%= render 'public/parks/favorites_list', favorites_list: @favorites_list %>
 
       </div>
 

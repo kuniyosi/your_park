@@ -1,4 +1,4 @@
-<% if @favorite_list.empty? %>
+<% if favorites_list.empty? %>
 
   <div class = 'text-center'>
     <p>お気に入りがまだ登録されていません。</p>
@@ -8,8 +8,8 @@
 
   <h4>お気に入り一覧</h4>
 
-  <% if @favorite_list.present? %>
-    <% @favorite_list.each do |park| %>
+  <% if favorites_list.present? %>
+    <% favorites_list.each do |park| %>
 
       <div class="card w-50 mx-auto mt-4 shadow-lg">
 
@@ -22,15 +22,15 @@
               <div class="col-10">
 
                 <p class="card-title">
-                  <%= link_to park.name, park_path(park.id) %>
+                  <%= link_to park.name, admin_park_path(park.id) %>
                 </p>
 
                 <p class="card-title">
-                  <%= link_to park.area, search_park_path(keyword: park.area) %>
+                  <%= link_to park.area, admin_search_park_path(keyword: park.area) %>
                 </p>
 
                 <p class="card-title">
-                  <%= render "public/park_comments/star_average", park: park %>
+                  <%= render "admin/park_comments/star_average", park: park %>
                 </p>
 
               </div>
@@ -44,6 +44,6 @@
     <% end %>
   <% end %>
 
-  <%= paginate @favorite_list %>
+  <%= paginate favorites_list %>
 
 <% end %>

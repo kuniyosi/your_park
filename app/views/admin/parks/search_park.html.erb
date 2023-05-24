@@ -6,7 +6,7 @@
 
     <h2 class="mb-4">絞り込み表示</h2>
 
-    <%= render 'admin/parks/parks_index' %>
+    <%= render 'admin/parks/parks_index', parks: @parks %>
 
     <%= paginate @parks %>
 

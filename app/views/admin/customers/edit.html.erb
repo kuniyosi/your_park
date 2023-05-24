@@ -1,44 +1,44 @@
-<div class="container">
+<div class = "container">
 
   <div>
     <%= flash[:notice] %>
   </div>
 
-  <div class="row no-gutters">
+  <div class = "row no-gutters">
 
-    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+    <div class = "col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
 
-      <h5 class="text-light bg-secondary p-4 mb-0">プロフィール編集</h5>
+      <h5 class = "text-light bg-secondary p-4 mb-0 text-center">会員情報編集</h5>
 
       <%= render 'layouts/errors' %>
 
-      <div class="form-body p-4">
+      <div class = "form-body p-4">
         <%= form_with model: [:admin, @customer] do |f| %>
 
         <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
 
-        <div class="input-group mb-3 mt-4">
-          <div class="input-group-prepend">
-            <span class="input-group-text" aria-hidden="true">Name</span>
+        <div class = "input-group mb-3 mt-4">
+          <div class = "input-group-prepend">
+            <span class = "input-group-text" aria-hidden="true">名前</span>
           </div>
-          <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
+          <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"例：太郎"%>
         </div>
 
-        <div class="input-group mb-3 mt-4">
-          <div class="input-group-prepend">
-            <span class="input-group-text" aria-hidden="true">住所</span>
+        <div class = "input-group mb-3 mt-4">
+          <div class = "input-group-prepend">
+            <span class = "input-group-text" aria-hidden="true">自己紹介</span>
           </div>
         <%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", placeholder:"自己紹介文"%>
         </div>
 
-　　　  <%= f.submit '投稿', class:"btn btn-lg btn-block btn-secondary" %>
+　　　  <%= f.submit '編集', class: "btn btn-lg btn-block btn-secondary" %>
 
 　　　  <% end %>
 
       </div>
-    
+
     </div>
-  
+
   </div>
 
 </div>

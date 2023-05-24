@@ -8,7 +8,7 @@
 
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
 
-      <h5 class="text-light bg-secondary p-4 mb-0">投稿編集フォーム</h5>
+      <h5 class="text-light bg-secondary p-4 mb-0 text-center">公園情報編集フォーム</h5>
 
       <% if @park.errors.any? %>
         <%= @park.errors.count %>件のエラーが発生しました
@@ -53,7 +53,7 @@
           <%= f.text_field :area, class:"form-control", placeholder:"例：吹田市" %>
           </div>
 
-          <%= f.submit '投稿', class:"btn btn-lg btn-block btn-secondary" %>
+          <%= f.submit '編集', class:"btn btn-lg btn-block btn-secondary" %>
 　　　　<% end %>
 
       </div>
