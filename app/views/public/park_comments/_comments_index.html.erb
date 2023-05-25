@@ -26,7 +26,9 @@
           </ul>
 
           <div class="card-body">
-            <%= link_to "コメント削除", admin_park_park_comment_path(park_comment.park, park_comment), method: :delete,class: "btn btn-outline-danger", "data-confirm" => "本当に削除しますか？" %>
+             <% if park_comment.customer == current_customer  %>
+              <%= link_to "コメント削除", admin_park_park_comment_path(park_comment.park, park_comment), method: :delete,class: "btn btn-outline-danger", "data-confirm" => "本当に削除しますか？" %>
+            <% end %>
           </div>
 
         </div>
