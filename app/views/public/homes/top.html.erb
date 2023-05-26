@@ -1,26 +1,15 @@
-<div class = "container">
+<div class="container">
 
-  <div class = "col-md-10 mx-auto mt-3">
+  <div class="col-md-10 mx-auto mt-5">
 
-    <div class = "row">
+    <div class="row">
 
-      <div class = "mx-auto">
-        <h2 class = "text-center font-weight-bold mb-2">大阪PARKは大阪府限定の公園検索サイト</h2>
-        <p class = "text-center font-weight-light mt-3">エリアや用途に合わせて検索できるのでいつもと違う公園がここで探せます！</p>
-        <p class = "text-center font-weight-light">利用後のコメントや評価を投稿してみんなで共有しよう！</p>
-      </div>
-
-      <div id = "carouselExampleSlidesOnly" class="carousel slide mx-auto" data-ride="carousel">
-        <div class = "carousel-inner">
-          <div class = "carousel-item active">
-            <%= image_tag asset_path('top2.jpeg',size: "16x16", class: "img-thumbnail bd-placeholder-img bd-placeholder-img-sm"), width: '100%', height: '75%' %>
-          </div>
-          <div class = "carousel-item">
-            <%= image_tag asset_path('top1.jpeg',size: "16x16", class: "img-thumbnail bd-placeholder-img bd-placeholder-img-sm"), width: '100%', height: '75%' %>
-          </div>
-          <div class ="carousel-item">
-            <%= image_tag asset_path('top3.jpeg',size: "16x16", class: "img-thumbnail bd-placeholder-img bd-placeholder-img-sm"), width: '100%', height: '75%' %>
-          </div>
+      <div class="card bg-dark text-white">
+        <%= image_tag asset_path('top2.jpeg', class: "img-thumbnail") %>
+        <div class="card-img-overlay">
+          <h2 class="card-title text-center font-weight-bold">大阪PARKは大阪府限定の公園検索サイト</h2>
+          <p class="card-text text-center font-weight-light">エリアや用途に合わせて検索できるのでいつもと違う公園がここで探せます！</p>
+          <p class="card-text text-center font-weight-light">利用後のコメントや評価を投稿してみんなで共有しよう！</p>
         </div>
       </div>
 
