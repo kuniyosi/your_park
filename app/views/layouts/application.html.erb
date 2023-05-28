@@ -32,7 +32,9 @@
             <% if customer_signed_in? %>
 
               <li class = "nav-item">
-                <%= link_to 'マイページ', customer_path(current_customer.id), class: 'bg-light btn mr-3' %>
+                <%= link_to customer_path(current_customer.id), class: 'bg-light btn mr-3' do %>
+                  <i class="far fa-user"></i>マイページ
+                <% end %>
               </li>
 
               <li class = "nav-item">
@@ -40,7 +42,9 @@
               </li>
 
               <li class = "nav-item">
-                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'bg-light btn mr-3' %>
+                <%= link_to destroy_customer_session_path, method: :delete, class: 'bg-light btn mr-3' do %>
+                  <i class="fas fa-sign-out-alt"></i>ログアウト
+                <% end %>
               </li>
 
             <% elsif admin_admin_signed_in? %>
@@ -50,41 +54,45 @@
               </li>
 
               <li class = "nav-item">
-                <%= link_to '会員一覧', admin_customers_path, class: 'bg-light btn mr-3' %>
+                <%= link_to admin_customers_path, class: 'bg-light btn mr-3' do %>
+                  <i class="fas fa-users"></i>会員一覧
+                <% end %>
               </li>
 
               <li class = "nav-item">
-                <%= link_to '公園一覧', admin_parks_path, class: 'bg-light btn mr-3' %>
+                <%= link_to '公園一覧', admin_parks_path, class: 'bg-light btn mr-3'  %>
               </li>
 
               <li class = "nav-item">
-                <%= link_to "ログアウト", destroy_admin_admin_session_path, method: :delete, class: 'bg-light btn mr-3' %>
+                <%= link_to destroy_admin_admin_session_path, method: :delete, class: 'bg-light btn mr-3' do %>
+                  <i class="fas fa-sign-out-alt"></i>ログアウト
+                <% end %>
               </li>
 
             <% else %>
 
               <li class = "nav-item">
-                <%= link_to "新規登録", new_customer_registration_path, class: 'bg-light btn mr-3' %>
+                <%= link_to new_customer_registration_path, class: 'bg-light btn mr-3' do %>
+                  <i class="fas fa-user-plus"></i>新規登録
+                <% end %>
               </li>
 
               <li class = "nav-item">
-                <%= link_to "管理者ログイン", admin_admin_session_path, class: 'bg-light btn mr-3' %>
+                <%= link_to new_customer_session_path, class: 'bg-light btn mr-3' do %>
+                  <i class="fas fa-sign-in-alt"></i>ログイン
+                <% end %>
               </li>
 
               <li class = "nav-item">
-                <%= link_to "ログイン", new_customer_session_path, class: 'bg-light btn mr-3' %>
+                <%= link_to root_path, class: 'bg-light btn mr-3' do %>
+                  <i class="fas fa-home"></i>TOPページ
+                <% end %>
               </li>
 
               <li class = "nav-item">
-                <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post, class: 'bg-light btn mr-3' %>
-              </li>
-
-              <li class = "nav-item">
-                <%= link_to 'Topページ', root_path, class: 'bg-light btn mr-3' %>
-              </li>
-
-              <li class = "nav-item">
-                <%= link_to 'Aboutページ', about_path, class: 'bg-light btn' %>
+                <%= link_to about_path, class: 'bg-light btn' do %>
+                  <i class="fas fa-link"></i>Aboutページ
+                <% end %>
               </li>
 
             <% end %>
@@ -93,7 +101,7 @@
       </div>
       </nav>
     </header>
-    
+
     <p class="notice"><%= notice %></p>
   　<p class="alert"><%= alert %></p>
 
