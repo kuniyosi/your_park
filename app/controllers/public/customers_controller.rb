@@ -6,7 +6,7 @@ class Public::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     @parks = @customer.parks
 
-    favorites = Favorite.where(customer_id: current_customer.id).pluck(:park_id)
+    favorites = Favorite.where(customer_id: @customer).pluck(:park_id)
     @favorites_list = Park.find(favorites)
     @favorites_list = Kaminari.paginate_array(@favorites_list).page(params[:page]).per(5)
   end
