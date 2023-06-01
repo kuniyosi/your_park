@@ -3,10 +3,10 @@ class Admin::ParksController < ApplicationController
 
   def new
     @park = Park.new
-    if params[:tag]
-       Tag.create(name: params[:tag])
-       redirect_to admin_parks_path
-    end
+
+    params[:tag]
+    Tag.create(name: params[:tag])
+    redirect_to admin_parks_path
   end
 
   def create
