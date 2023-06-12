@@ -4,7 +4,9 @@
 
     <div class = "col-8 mx-auto mt-4">
 
-      <h2 class="mb-4">絞り込み表示</h2>
+      <p>
+        検索キーワード: "<%= @keyword %>"
+      </p>
 
       <%= render 'public/parks/parks_index', parks: @parks %>
 

@@ -31,6 +31,13 @@
           <ul class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
 
+            <div class="search">
+              <%= form_with(url: search_path, scope: :park, local: true) do |f| %>
+                <%= f.text_field :search, placeholder: "キーワード検索" %>
+                <%= f.submit "検索", class: "btn btn-primary mr-5" %>
+              <% end %>
+            </div>
+
               <li class = "nav-item">
                 <%= link_to customer_path(current_customer.id), class: 'bg-light btn mr-3' do %>
                   <i class="far fa-user"></i>マイページ
@@ -48,6 +55,13 @@
               </li>
 
             <% elsif admin_admin_signed_in? %>
+            
+              <div class="search">
+                <%= form_with(url: admin_search_path, scope: :park, local: true) do |f| %>
+                  <%= f.text_field :search, placeholder: "キーワード検索" %>
+                  <%= f.submit "検索", class: "btn btn-primary mr-5" %>
+                <% end %>
+              </div>
 
               <li class = "nav-item">
                 <%= link_to '新規投稿', new_admin_park_path, class: 'bg-light btn mr-3' %>
