@@ -24,6 +24,12 @@ class Public::ParksController < ApplicationController
     @parks = @parks.page(params[:page])
   end
 
+  def search
+    @keyword = params[:park][:search] if params[:park] # if paramsで再読み込みした場合のエラーを回避。全件データを表示する
+    @parks_all = Park.search(@keyword)
+    @parks = Kaminari.paginate_array(@parks_all).page(params[:page]).per(5)
+  end
+
  private
 
   def park_params

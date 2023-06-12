@@ -22,6 +22,10 @@ Rails.application.routes.draw do
 
     get "search_park" => "parks#search_park"
 
+    post "/search", to: "parks#search"
+    get "/search", to: "parks#search"
+
+
   end
 
   namespace :admin do
@@ -37,6 +41,9 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update, :destroy]
 
     get "search_park" => "parks#search_park"
+
+    post "/search", to: "parks#search"
+    get "/search", to: "parks#search"
 
   end
 

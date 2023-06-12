@@ -3,10 +3,10 @@ class Admin::ParksController < ApplicationController
 
   def new
     @park = Park.new
-
-    params[:tag]
-    Tag.create(name: params[:tag])
-    redirect_to admin_parks_path
+    if params[:tag] # タグを追加する時のアクション
+       Tag.create(name: params[:tag])
+       redirect_to admin_parks_path
+    end
   end
 
   def create
@@ -66,6 +66,12 @@ class Admin::ParksController < ApplicationController
   def search_park
     @parks = Park.search(params[:keyword])
     @parks = @parks.page(params[:page])
+  end
+
+  def search
+    @keyword = params[:park][:search] if params[:park] # if paramsで再読み込みした場合のエラーを回避。全件データを表示する
+    @parks_all = Park.search(@keyword)
+    @parks = Kaminari.paginate_array(@parks_all).page(params[:page]).per(5)
   end
 
   private

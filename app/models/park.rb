@@ -33,4 +33,9 @@ class Park < ApplicationRecord
     park_comments.exists?(customer_id: customer.id)
   end
 
+  def self.search(search)
+    return Park.all unless search
+    Park.where(["name LIKE(?)", "%#{search}%"])
+  end
+
 end
