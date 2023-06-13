@@ -13,6 +13,11 @@
     <div class = "col-md-8  offset-1 mt-4">
 
       <h3 class="mb-4 text-center">公園一覧</h3>
+      <p>
+       <%= link_to '新しい順', admin_parks_path(latest: "true") %>
+       |<%= link_to '古い順', admin_parks_path(old: "true") %>
+       |<%= link_to 'お気に入り登録数順', admin_parks_path(favorite: "true") %>
+      </p>
 
       <%= render 'admin/parks/parks_index', parks: @parks %>
 

@@ -4,6 +4,8 @@ class Park < ApplicationRecord
   has_many :park_tags, dependent: :destroy
   has_many :tags, through: :park_tags, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorited_customers, through: :favorites, source: :customer
+  # favoriteテーブルを通ってcustomerモデルのデータをとってくる
 
   has_one_attached :image
 
@@ -12,6 +14,10 @@ class Park < ApplicationRecord
   validates :area, presence: true, length: { maximum: 10 }
   validates :address, presence: true, length: {  minimum: 2, maximum: 30 }
   validates :image, presence: true
+
+  # 新しい順、古い順で並び替えを行う
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
 
   def self.search(search_word)
     Park.where(['area LIKE ?', "#{search_word}"])

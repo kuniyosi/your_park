@@ -8,7 +8,17 @@ class Public::ParksController < ApplicationController
   end
 
   def index
-    @parks = Park.page(params[:page])
+    if params[:latest]
+     @parks = Park.latest
+     @parks = @parks.page(params[:page])
+    elsif params[:old]
+     @parks = Park.old
+     @parks = @parks.page(params[:page])
+    else params[:favorite]
+      parks = Park.includes(:favorited_customers).sort {|a,b| b.favorited_customers.size <=> a.favorited_customers.size}
+      @parks = Kaminari.paginate_array(parks).page(params[:page]).per(5)
+    end
+
     if params[:tag_ids]
        @parks = []
        params[:tag_ids].each do |key, value|
@@ -20,14 +30,14 @@ class Public::ParksController < ApplicationController
   end
 
   def search_park
-    @parks = Park.search(params[:keyword])
-    @parks = @parks.page(params[:page])
+    parks = Park.search(params[:keyword])
+    @parks = parks.page(params[:page])
   end
 
   def search
     @keyword = params[:park][:search] if params[:park] # if paramsで再読み込みした場合のエラーを回避。全件データを表示する
-    @parks_all = Park.search(@keyword)
-    @parks = Kaminari.paginate_array(@parks_all).page(params[:page]).per(5)
+    parks_all = Park.search(@keyword)
+    @parks = Kaminari.paginate_array(parks_all).page(params[:page]).per(5)
   end
 
  private
