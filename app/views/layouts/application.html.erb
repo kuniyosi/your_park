@@ -33,7 +33,7 @@
 
             <div class="search">
               <%= form_with(url: search_path, scope: :park, local: true) do |f| %>
-                <%= f.text_field :search, placeholder: "公園名を検索" %>
+                <%= f.text_field :search, placeholder: "公園名、エリア名を検索" %>
                 <%= f.submit "検索", class: "btn btn-primary mr-5" %>
               <% end %>
             </div>
@@ -86,25 +86,25 @@
             <% else %>
 
               <li class = "nav-item">
-                <%= link_to new_customer_registration_path, class: 'bg-light btn mr-3' do %>
+                <%= link_to new_customer_registration_path, class: 'bg-light btn mr-3 my-2' do %>
                   <i class="fas fa-user-plus"></i>新規登録
                 <% end %>
               </li>
 
               <li class = "nav-item">
-                <%= link_to new_customer_session_path, class: 'bg-light btn mr-3' do %>
+                <%= link_to new_customer_session_path, class: 'bg-light btn mr-3 my-2' do %>
                   <i class="fas fa-sign-in-alt"></i>ログイン
                 <% end %>
               </li>
 
               <li class = "nav-item">
-                <%= link_to root_path, class: 'bg-light btn mr-3' do %>
+                <%= link_to root_path, class: 'bg-light btn mr-3 my-2' do %>
                   <i class="fas fa-home"></i>TOPページ
                 <% end %>
               </li>
 
               <li class = "nav-item">
-                <%= link_to about_path, class: 'bg-light btn' do %>
+                <%= link_to about_path, class: 'bg-light btn my-2' do %>
                   <i class="fas fa-link"></i>Aboutページ
                 <% end %>
               </li>
