@@ -27,16 +27,16 @@ class Admin::ParksController < ApplicationController
 
   def index
     if params[:latest]
-     @parks = Park.latest
-     @parks = @parks.page(params[:page])
+     parks = Park.latest
+     @parks = parks.page(params[:page])
     elsif params[:old]
-     @parks = Park.old
-     @parks = @parks.page(params[:page])
+     parks = Park.old
+     @parks = parks.page(params[:page])
     else params[:favorite]
       parks = Park.includes(:favorited_customers).sort {|a,b| b.favorited_customers.size <=> a.favorited_customers.size}
       @parks = Kaminari.paginate_array(parks).page(params[:page]).per(5)
     end
-    
+
     if params[:tag_ids]
        @parks = []
        params[:tag_ids].each do |key, value|
