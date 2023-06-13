@@ -14,6 +14,7 @@
         <th>公園名</th>
         <th>エリア</th>
         <th>平均点</th>
+        <th>お気に入りの多い順</th>
       </tr>
     </thead>
 
@@ -38,6 +39,10 @@
 
           <td>
             <%= render "admin/park_comments/star_average", park: park %>
+          </td>
+
+          <td>
+            <%= park.favorites.count %>
           </td>
 
         </tr>

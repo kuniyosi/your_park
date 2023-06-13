@@ -4,11 +4,9 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @parks = @customer.parks
-
     favorites = Favorite.where(customer_id: @customer).pluck(:park_id)
-    @favorites_list = Park.find(favorites)
-    @favorites_list = Kaminari.paginate_array(@favorites_list).page(params[:page]).per(5)
+    favorites_list = Park.find(favorites)
+    @favorites_list = Kaminari.paginate_array(favorites_list).page(params[:page]).per(5)
   end
 
   def edit
