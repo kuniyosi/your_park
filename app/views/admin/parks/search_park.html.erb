@@ -1,28 +1,32 @@
-<div class="container px-5 px-sm-0">
-
-  
+<div class = "col-sm-9 mx-auto">
 
     <h2 class="mb-4">絞り込み表示</h2>
 
-    <% @parks.each do |park| %>
     <div class="card-group">
-       <div class="row">
-     <div class="card mx-5">
-        <%= image_tag park.get_image(150,150), class: "width=100%"  %>
-    　<div class="card-body column flex-direction:row">
-      <h5 class="card-title"><%=link_to park.name,admin_park_path(park.id)  %></h5>
-      <p class="card-text"><%= link_to park.area, admin_search_park_path(keyword: park.area) %></p>
-      <p class="card-text"><%= render "admin/park_comments/star_average", park: park %></p>
+
+      <% @parks.each do |park| %>
+
+      <div class="col-sm-6 col-md-6 col-lg-4">
+
+        <div class="card mx-4 my-3">
+        <%= image_tag park.get_image(150,150), class: "bd-placeholder-img card-img-top width=100%"  %>
+          <div class="card-body column flex-direction:row">
+            <h5 class="card-title"><%=link_to park.name,admin_park_path(park.id)  %></h5>
+            <p class="card-text"><%= link_to park.area, admin_search_park_path(keyword: park.area) %></p>
+            <p class="card-text"><%= render "admin/park_comments/star_average", park: park %></p>
+          </div>
+        </div>
+
+      </div>
+
+      <% end %>
+
     </div>
-  </div>
-  <% end %>
 
-</div>
-
-    <%= paginate @parks %>
-
+    <div class = "row">
+      <div class = "col-md-4 my-5 mx-auto">
+        <%= paginate @parks %>
+      </div>
     </div>
-
-  </div>
 
 </div>

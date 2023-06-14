@@ -6,50 +6,31 @@
 
 <% else %>
 
-  <table class='table table-hover table-inverse table-dark table-striped'>
+    <div class="card-group">
 
-    <thead>
-      <tr class = "text-center">
-        <th></th>
-        <th>公園名</th>
-        <th>エリア</th>
-        <th>平均点</th>
-        <th>お気に入りの多い順</th>
-      </tr>
-    </thead>
+      <% @parks.each do |park| %>
 
-    <tbody>
-      <% parks.each do |park| %>
+      <div class="col-xs-4 col-sm-6">
 
-        <tr class = "text-center">
+        <div class="card mx-3 my-3">
+        <%= image_tag park.get_image(150,150), class: "bd-placeholder-img card-img-top background-size=cover"  %>
+          <div class="card-body column flex-direction:row p-1">
+            <h5 class="card-title"><%=link_to park.name,admin_park_path(park.id)  %></h5>
+            <p class="card-text"><%= link_to park.area, admin_search_park_path(keyword: park.area) %></p>
+            <p class="card-text"><%= render "admin/park_comments/star_average", park: park %></p>
+          </div>
+        </div>
 
-          <td>
-            <%= link_to admin_park_path(park.id) do %>
-              <%= image_tag park.get_image(150,150), size:'150x100' %>
-            <% end %>
-          </td>
-
-          <td>
-            <%=link_to park.name,admin_park_path(park.id)  %>
-          </td>
-
-          <td>
-            <%= link_to park.area, admin_search_park_path(keyword: park.area) %>
-          </td>
-
-          <td>
-            <%= render "admin/park_comments/star_average", park: park %>
-          </td>
-
-          <td>
-            <%= park.favorites.count %>
-          </td>
-
-        </tr>
+      </div>
 
       <% end %>
-    </tbody>
 
-  </table>
+    </div>
+
+    <div class = "row">
+      <div class = "col-xs-4 my-5 mx-auto">
+        <%= paginate @parks %>
+      </div>
+    </div>
 
 <% end %>

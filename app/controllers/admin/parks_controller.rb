@@ -28,13 +28,13 @@ class Admin::ParksController < ApplicationController
   def index
     if params[:latest]
      parks = Park.latest
-     @parks = parks.page(params[:page])
+     @parks = parks.page(params[:page]).per(8)
     elsif params[:old]
      parks = Park.old
-     @parks = parks.page(params[:page])
+     @parks = parks.page(params[:page]).per(8)
     else params[:favorite]
       parks = Park.includes(:favorited_customers).sort {|a,b| b.favorited_customers.size <=> a.favorited_customers.size}
-      @parks = Kaminari.paginate_array(parks).page(params[:page]).per(5)
+      @parks = Kaminari.paginate_array(parks).page(params[:page]).per(8)
     end
 
     if params[:tag_ids]
@@ -75,13 +75,13 @@ class Admin::ParksController < ApplicationController
 
   def search_park
     @parks = Park.search(params[:keyword])
-    @parks = @parks.page(params[:page])
+    @parks = @parks.page(params[:page]).per(8)
   end
 
   def search
     @keyword = params[:park][:search] if params[:park] # if paramsで再読み込みした場合のエラーを回避。全件データを表示する
     @parks_all = Park.search(@keyword)
-    @parks = Kaminari.paginate_array(@parks_all).page(params[:page]).per(5)
+    @parks = Kaminari.paginate_array(@parks_all).page(params[:page]).per(8)
   end
 
   private
