@@ -1,14 +1,9 @@
-<div class="container px-5 px-sm-0">
+<div class="container">
 
   <div class="row">
 
-    <div class="col-3 my-4">
+    <div class = "col-md-9 mx-auto">
 
-     <%= render 'public/parks/tag' %>
-
-    </div>
-
-    <div class = "col-9 mt-4">
       <h3 class="mb-4 text-center">公園一覧</h3>
       <p>
        <%= link_to '新しい順', parks_path(latest: "true") %>
@@ -18,7 +13,11 @@
 
       <%= render 'public/parks/parks_index', parks: @parks %>
 
-      <%= paginate @parks %>
+    </div>
+
+    <div class="col-xs-2 my-4 mx-auto">
+
+      <%= render 'public/parks/tag' %>
 
     </div>
 

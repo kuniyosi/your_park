@@ -1,16 +1,10 @@
-<div class="container px-5 px-sm-0">
+<div class="container">
 
-  <div class="row">
+  <div class = "col-md-9 mx-auto">
 
-    <div class = "col-8 mx-auto mt-4">
+  <h2 class="mb-4">絞り込み表示</h2>
 
-      <h2 class="mb-4">絞り込み表示</h2>
-
-      <%= render 'public/parks/parks_index', parks: @parks %>
-
-      <%= paginate @parks %>
-
-    </div>
+  <%= render 'public/parks/parks_index', parks: @parks %>
 
   </div>
 

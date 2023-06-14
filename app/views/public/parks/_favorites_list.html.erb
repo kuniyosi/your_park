@@ -6,44 +6,26 @@
 
 <% else %>
 
-  <h4>お気に入り一覧</h4>
-
   <% if favorites_list.present? %>
     <% favorites_list.each do |park| %>
 
-      <div class="card w-50 mx-auto mt-4 shadow-lg">
+      <div class="col-sm-10 col-md-6 col-lg-4">
 
-        <%= image_tag park.get_image(150,150),size: "150x150", class:"card-img-top"; %>
-
-          <div class="card-body">
-
-            <div class="row">
-
-              <div class="col-10">
-
-                <p class="card-title">
-                  <%= link_to park.name, park_path(park.id) %>
-                </p>
-
-                <p class="card-title">
-                  <%= link_to park.area, search_park_path(keyword: park.area) %>
-                </p>
-
-                <p class="card-title">
-                  <%= render "public/park_comments/star_average", park: park %>
-                </p>
-
-              </div>
-
-            </div>
-
+        <div class="card mx-4 my-3">
+        <%= image_tag park.get_image(150,150), class: "bd-placeholder-img card-img-top"  %>
+          <div class="card-body column flex-direction:row p-2">
+            <h5 class="card-title"><%=link_to park.name,park_path(park.id)  %></h5>
+            <p class="card-text"><%= link_to park.area, search_park_path(keyword: park.area) %></p>
+            <p class="card-text"><%= render "public/park_comments/star_average", park: park %></p>
           </div>
+        </div>
 
       </div>
 
-    <% end %>
+      <% end %>
   <% end %>
 
-  <%= paginate favorites_list %>
-
 <% end %>
+
+
+

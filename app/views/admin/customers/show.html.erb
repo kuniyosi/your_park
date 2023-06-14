@@ -1,17 +1,14 @@
-<div class="container px-5 px-sm-0">
+<div class="container">
 
   <div>
     <%= flash[:notice] %>
   </div>
 
-  <div class="row">
-
-    <div class="col-md-3">
-
       <h2>
-        <%= @customer.name %>さんの<br>
-        ページです
+        <%= @customer.name %>さんのページです
       </h2>
+
+      <div class="col-sm-9 col-md-9 mx-auto">
 
       <table class='table'>
 
@@ -43,16 +40,26 @@
 
     </div>
 
-    <div class = "col-md-8 offset-md-1">
+</div>
 
-      <div class="card-list-container py-5">
+<div class="container">
+
+    <div class = "col-sm-12 col-md-12 mx-auto mt-3">
+
+      <h4>お気に入り一覧</h4>
+
+      <div class="card-group">
 
         <%= render 'admin/parks/favorites_list', favorites_list: @favorites_list %>
 
       </div>
 
     </div>
-
-  </div>
+    
+    <div class = "row">
+      <div class = "col-xs-4 mt-3 mx-auto">
+        <%= paginate @favorites_list %>
+      </div>
+    </div>
 
 </div>
