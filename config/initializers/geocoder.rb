@@ -1,7 +1,7 @@
 Geocoder.configure(
   # Geocoding options
   timeout: 5,                 # geocoding service timeout (secs)
-  lookup: :google,         # name of geocoding service (symbol)
+  lookup: :google,         # name of geocoding service (symbol) 緯度経度を計算する際にgoogleを参照する
   # ip_lookup: :ipinfo_io,      # name of IP address geocoding service (symbol)
   language: :ja,              # ISO-639 language code
   # use_https: false,           # use HTTPS for lookup requests? (if supported)

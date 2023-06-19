@@ -62,11 +62,13 @@
 
         function initMap(){
 
+          // デフォルトで指定の緯度経度からマップの真ん中に指定
           map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: <%= @park.latitude %>, lng: <%= @park.longitude %>},
             zoom: 12,
           });
 
+          //マーカーの指定 
           marker = new google.maps.Marker({
             position:  {lat: <%= @park.latitude %>, lng: <%= @park.longitude %>},
             map: map

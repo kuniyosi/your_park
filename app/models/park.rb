@@ -19,6 +19,7 @@ class Park < ApplicationRecord
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
 
+  # addressカラムのデータから緯度経度を算出する
   geocoded_by :address
   after_validation :geocode
 
