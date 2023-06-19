@@ -42,6 +42,36 @@
 
       </ul>
 
+      <div class = "my-4">
+        <h2>所在地</h2>
+        <div id='map', class = "d-block mx-auto col-12 col-sm-10"></div>
+      </div>
+
+      <style>
+        #map {
+          height: 350px;
+          width: 100%;
+        }
+      </style>
+
+      <script>
+        let map
+
+        function initMap(){
+
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: <%= @park.latitude %>, lng: <%= @park.longitude %>},
+            zoom: 12,
+          });
+
+          marker = new google.maps.Marker({
+            position:  {lat: <%= @park.latitude %>, lng: <%= @park.longitude %>},
+            map: map
+          });
+        }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
+
       <div id = "comment_form_<%= @park.id %>" class = "text-center">
         <%= render "public/park_comments/form", park: @park, park_comment: @park_comment %>
       </div>
