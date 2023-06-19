@@ -100,8 +100,8 @@ ActiveRecord::Schema.define(version: 2023_06_18_193701) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "area"
     t.string "address"
-    t.string "latitude"
-    t.string "longitude"
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "tags", force: :cascade do |t|

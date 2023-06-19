@@ -19,6 +19,9 @@ class Park < ApplicationRecord
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
 
+  geocoded_by :address
+  after_validation :geocode
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -40,5 +43,7 @@ class Park < ApplicationRecord
     return Park.all unless search
     Park.where(["name LIKE(?) OR area LIKE(?)", "%#{search}%", "%#{search}%"])
   end
+
+
 
 end
