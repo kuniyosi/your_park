@@ -15,7 +15,9 @@ class Public::ParkCommentsController < ApplicationController
 
   def destroy
     @comment = ParkComment.find(params[:id])
-    if @comment.destroy
+    # @comment.customer.id == current_customer.idを入れて他会員が削除できないようにする
+    if @comment.customer.id == current_customer.id
+       @comment.destroy
        flash[:notice] = "コメントを削除しました"
        redirect_to request.referer
     else
