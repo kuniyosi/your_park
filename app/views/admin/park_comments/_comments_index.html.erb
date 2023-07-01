@@ -23,11 +23,10 @@
             <li class="list-group-item">評価 :<%= park_comment.star %>点</li>
             <li class="list-group-item" id="star_<%= park_comment.id%>"></li>
             <li class="list-group-item">コメント：<%= park_comment.comment %></li>
+            <li class="list-group-item">
+              <%= link_to "コメント削除", admin_park_park_comment_path(park_comment.park, park_comment), method: :delete,class: "btn btn-outline-danger", "data-confirm" => "本当に削除しますか？" %>
+            </li>
           </ul>
-
-          <div class="card-body">
-            <%= link_to "コメント削除", admin_park_park_comment_path(park_comment.park, park_comment), method: :delete,class: "btn btn-outline-danger", "data-confirm" => "本当に削除しますか？" %>
-          </div>
 
         </div>
 
